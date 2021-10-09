@@ -1,0 +1,10 @@
+.contenedor-color {
+
+   
+    background-image: url("../images/backgroundRegister.jpg") ;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-size: cover;
+    overflow: auto;
+}
