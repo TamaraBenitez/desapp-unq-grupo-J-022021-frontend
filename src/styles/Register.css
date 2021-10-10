@@ -1,10 +1,29 @@
-.contenedor-color {
+.conteiner-color {
 
    
-    background-image: url("../images/backgroundRegister.jpg") ;
+    background-image: url("../images/backgroundRegister2.jpg") ;
     width: 100%;
     height: 100vh;
     position: absolute;
     background-size: cover;
     overflow: auto;
 }
+
+
+
+.logoRegister {
+
+    margin-top: 50px;
+    width: 15%;
+    height: 20%;
+    margin-right: 20px;
+}
+
+.titleSign{
+
+    margin-top: 20;
+    
+    color:white
+
+}
+
