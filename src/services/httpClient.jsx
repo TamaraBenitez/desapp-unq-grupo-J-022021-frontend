@@ -7,7 +7,7 @@ const httpClient = axios.create({
     httpsAgent: new https.Agent({keepAlive:true})
   });
 
-    const history =useHistory()
+    
 
     httpClient.interceptors.request.use((config)=> {
         const token = localStorage.getItem('token');
@@ -24,8 +24,8 @@ const httpClient = axios.create({
               
           if (error.response !==undefined && error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            history.push("/login");
+            
           }
         })    
 
-export {httpClient};
+export default {httpClient};
