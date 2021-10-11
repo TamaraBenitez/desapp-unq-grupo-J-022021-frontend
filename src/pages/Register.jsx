@@ -1,15 +1,14 @@
 import Container from '@mui/material/Container';
-import "./styles/Register.css"
+import "../styles/Register.css"
 import Grid from '@mui/material/Grid';
-import Logo from "./images/logo.png";
+import Logo from "../images/logo.png";
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import CustomTextField from './components/CustomTextField';
-import Link from '@mui/material/Link';
-import CardWrap from './components/CardWrap';
+import CustomTextField from '../components/CustomTextField';
+import CardWrap from '../components/CardWrap';
 import Button from '@mui/material/Button';
 import {makeStyles} from "@mui/styles";
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,12 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Register = () => {
     const classes = useStyles();
-    const history= useHistory();
-
-    const handleLink = () => {
-
-        history.push("/login")
-    }
+ 
 
     return (
 
@@ -87,7 +81,7 @@ const Register = () => {
                             justifyContent="center"
                             alignItems="center" 
                         >
-                            <h1 className="titleSign" className={classes.titleSignStyle}>
+                            <h1 className={classes.titleSignStyle}>
                                 Sign in
                             </h1>
 
@@ -205,7 +199,7 @@ const Register = () => {
                                
                             </Grid>
                             <Button variant="outlined" style={{ background: 'linear-gradient(to bottom, #071520, #194D78)', boxShadow: ' 4px 4px 4px 4px rgba(0, 0, 0, 0.4)' ,color:"white",marginTop:"20px",marginBottom:"20px"}} >Sign in</Button>
-                            <Link style={{color:"white"}} onClick={handleLink}>Do you already have an account? Log in</Link>
+                            <Link to="/login" style={{color:"white"}} >Do you already have an account? Log in</Link>
                         </Grid>
                     </Paper>
                 </Box>
