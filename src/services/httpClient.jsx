@@ -1,8 +1,11 @@
 import axios from 'axios';
+import https from 'https';
 import { useHistory } from 'react-router-dom';
 
 const httpClient = axios.create({
-    baseURL: process.env.API_URL});
+    baseURL: process.env.API_URL,
+    httpsAgent: new https.Agent({keepAlive:true})
+  });
 
     const history =useHistory()
 
