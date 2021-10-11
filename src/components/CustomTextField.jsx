@@ -1,22 +1,24 @@
 import {colors,TextField} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 
 
 const useStyles = makeStyles((theme) => ({
   textField: {
     marginTop: 41,
+    marginBottom:"40px !important",
     width:300,
     height:56,
-    background:"#071520 !important"
+    background:"#071520 !important",
+   
   },
   inputRoot: (props) => ({
     borderColor: props.value ? "264E6C !important" : "#2E6087 !important",
     borderRadius: 3.5,
     borderWidth: 1,
     borderStyle: "solid",
-    color: colors["grey"][200]
+    color: "#FFFFFF !important"
   }),
   
   inputFocused: {
@@ -28,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     border: "none !important"
   },
   labelRoot: {
-    color: colors["grey"][200]
+    color: "#FFFFFF !important"
   },
   labelShink: {
     color: `${colors["grey"][200]} !important`,

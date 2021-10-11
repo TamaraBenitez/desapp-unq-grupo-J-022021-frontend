@@ -1,10 +1,10 @@
 import Container from '@mui/material/Container';
-import "./styles/Register.css"
+import "../styles/Register.css"
 import Grid from '@mui/material/Grid';
-import Logo from "./images/logo.png";
+import Logo from "../images/logo.png";
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import CustomTextField from './components/CustomTextField';
+import CustomTextField from '../components/CustomTextField';
 
 
 
