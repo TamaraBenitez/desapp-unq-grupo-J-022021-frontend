@@ -7,7 +7,7 @@ import { API_Quotations } from '../services/APIListQuotation';
 
 const Quotation = () => {
 
-    [listQuotation,setListQuotation] = React.useState([]);
+ const [listQuotation,setListQuotation] = React.useState([]);
 
 
     useEffect(()=>  {
@@ -29,7 +29,15 @@ const Quotation = () => {
 return (
 
     <Container disableGutters maxWidth={false} className="conteiner-color">
-
+    {
+        listQuotation.map(list=>(<>
+            <div style={{color:"white"}}>Symbol { list.symbol}</div>
+            <div style={{color:"white"}}>Hour {list.hourCotization}</div>
+            <div style={{color:"white"}}>Price Ars {list.priceArs}</div>
+            </>
+            
+        ))
+    }
     
 
 
