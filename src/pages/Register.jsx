@@ -45,7 +45,7 @@ const Register = () => {
 
 
     const handleSubmit = (event) => {
-
+        localStorage.clear()
         event.preventDefault();
         API_Register.postRegister(data)
         .then((response)=> {
@@ -53,7 +53,7 @@ const Register = () => {
             localStorage.setItem("token",response.data.accessToken)
             history.push("/login");
         })
-        .catch(error=> {console.log(error)})
+        .catch(error=> {console.log(error.response.data.error_msg)})
     }
 
 
