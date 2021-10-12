@@ -1,9 +1,10 @@
 import axios from 'axios';
 import https from 'https';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
 
 const httpClient = axios.create({
-    baseURL: process.env.API_URL,
+    baseURL: process.env.REACT_APP_API_URL ,
     httpsAgent: new https.Agent({keepAlive:true})
   });
 
@@ -24,8 +25,8 @@ const httpClient = axios.create({
               
           if (error.response !==undefined && error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            
+            return <Redirect to={"/login"}/>
           }
         })    
 
-export default {httpClient};
+export {httpClient};

@@ -53,16 +53,13 @@ const Register = () => {
             localStorage.setItem("token",response.data.accessToken)
             history.push("/login");
         })
-
-
+        .catch(error=> {console.log(error)})
     }
 
 
     const handleInputChange = (event) => {
         setData({ ...data, [event.target.name]: event.target.value });
     }
-
-   
 
 
     return (

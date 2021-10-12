@@ -1,4 +1,4 @@
-import httpClient from './httpClient';
+import {httpClient} from './httpClient';
 
 
 class APIRegister {
@@ -20,6 +20,6 @@ class APIRegister {
     }
 }
 
-const API_Register = new APIRegister;
+const API_Register = new APIRegister();
 
 export {API_Register}
