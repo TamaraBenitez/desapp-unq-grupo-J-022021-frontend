@@ -40,42 +40,26 @@ const Quotation = () => {
         <Container disableGutters maxWidth={false} className="conteiner-color">
 
 
-
-
-
-            <CardWrap style={{
-                marginLeft: "140px",
-                minHeight: "300px",
-                marginRight: "140px",
-                backgroundColor: "transparent",
-            }}>
-
                 <div className="container-welcome" >
                     <span className="welcome"> {t("welcomeUser")} </span>
 
                 </div>
 
                 <div style={{marginTop:"150px"}}>
-                <Scroll height="360px">
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
+                        <CardWrap>
 
                         {
-                            listQuotation.map(list => (<Grid item xs={6}>
+                            listQuotation.map(list => (
                                 <CardQuotations symbol={list.symbol} hour={dayjs(list.hourCotization).format('HH:mm')} price={list.priceArs} />
 
-                            </Grid>
 
                             ))
                         }
-
-                    </Grid>
-                </Scroll>
+                    </CardWrap>
 
                 </div>
 
 
-            </CardWrap>
 
 
         </Container>
