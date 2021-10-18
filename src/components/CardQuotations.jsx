@@ -29,10 +29,10 @@ const CardQuotations = ({symbol,hour,price}) =>{
     <Box sx={{ minWidth: 100 }}>
       <Card className={classes.root} variant="outlined"><CardContent>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-      {symbol}
+      {symbol.slice(0,-4)}
       </Typography>
       <Typography variant="h5" component="div">
-      {price}
+       $ {price.replace(/[,.]/g, m => (m === ',' ? '.' : ','))} ARS
       </Typography>
       <Typography sx={{ mb: 1.5 }} color="text.secondary">
      {hour} 
