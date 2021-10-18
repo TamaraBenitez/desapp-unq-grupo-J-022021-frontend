@@ -1,0 +1,19 @@
+{
+ 
+    "userLabel": "Username", 
+    "passwordLabel": "Password",
+    "loginButton": "Log in",
+    "signIn": "Sign in",
+    "name" : "Name" ,
+    "lastName": "Last name" ,
+    "email" : "Email" ,
+    "address": "Address" ,
+    "cvu":"CVU" ,
+    "addressWallet": "Address wallet" ,
+    "existAccount": "Do you already have an account? Log in" , 
+    "notAccount" : "You do not have an account? Create a new",
+    "welcomeUser" : "Welcome tamara"
+
+
+
+}

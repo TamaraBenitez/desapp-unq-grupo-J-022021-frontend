@@ -11,6 +11,11 @@ import { makeStyles } from "@mui/styles";
 import { Link,useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import { API_Register } from '../services/APIRegister';
+import { useTranslation } from "react-i18next";
+import { InputAdornment, IconButton} from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +47,13 @@ const Register = () => {
         addrWallet: ""
     });
     const history = useHistory();
+    const { t, i18n } = useTranslation();
+    const [isShowPassword, setIsShowPassword] = useState(false);
 
+
+    const changeVisualization = () => {
+		setIsShowPassword(!isShowPassword);
+	};
 
     const handleSubmit = (event) => {
         localStorage.clear()
@@ -51,7 +62,7 @@ const Register = () => {
         .then((response)=> {
             if(response !== undefined && response.data !== undefined){
             localStorage.setItem("token",response.data.accessToken)
-            history.push("/quotations");
+            history.push("/login");
             }
         })
         .catch(error=> {console.log(error.response.data.error_msg)})
@@ -114,7 +125,7 @@ const Register = () => {
                                     alignItems="center"
                                 >
                                     <h1 className={classes.titleSignStyle}>
-                                        Sign in
+                                    {t("signIn")} 
                                     </h1>
 
 
@@ -128,7 +139,7 @@ const Register = () => {
                                             required
                                             helperText="Caracteres:min 10,max 30"
                                             type="text"
-                                            label="Name"
+                                            label={t("name")}
                                             defaultValue=""
                                             name="name"
                                             onChange={handleInputChange}
@@ -147,7 +158,7 @@ const Register = () => {
                                         <CustomTextField
                                             required
                                             type="text"
-                                            label="Last name"
+                                            label={t("lastName")}
                                             defaultValue=""
                                             name="lastName"
                                             helperText="Caracteres:min 10,max 30"
@@ -167,11 +178,38 @@ const Register = () => {
                                         <CustomTextField
                                             required
                                             type="password"
-                                            label="Password"
+                                            label={t("passwordLabel")}
                                             defaultValue=""
                                             name="password"
                                             onChange={handleInputChange}
                                             value={data.password}
+                                            type={isShowPassword ? "text" : "password"}
+									data={{
+										endAdornment: (
+											<InputAdornment position="end">
+												<IconButton
+													style={{ padding: "0px" }}
+													onClick={
+														changeVisualization
+													}
+												>
+													{isShowPassword ? (
+														<VisibilityOffIcon
+															style={{
+																color: "white",
+															}}
+														/>
+													) : (
+														<VisibilityIcon
+															style={{
+																color: "white",
+															}}
+														/>
+													)}
+												</IconButton>
+											</InputAdornment>
+										),
+									}}
 
                                             inputProps={{
                                                 autocomplete: "new-password",
@@ -183,7 +221,7 @@ const Register = () => {
                                         <CustomTextField
                                             required
                                             type="email"
-                                            label="Email"
+                                            label={t("email")}
                                             defaultValue=""
                                             name="email"
                                             onChange={handleInputChange}
@@ -199,7 +237,7 @@ const Register = () => {
                                         <CustomTextField
                                            
                                             type="text"
-                                            label="Address"
+                                            label={t("Address")}
                                             defaultValue=""
                                             name="address"
                                             helperText="Caracteres:max 30"
@@ -216,7 +254,7 @@ const Register = () => {
                                         <CustomTextField
                                             required
                                             type="text"
-                                            label="CVU"
+                                            label={t("cvu")}
                                             defaultValue=""
                                             name="cvu"
                                             helperText="22 digitos"
@@ -233,7 +271,7 @@ const Register = () => {
                                         <CustomTextField
                                             required
                                             type="text"
-                                            label="Address Wallet"
+                                            label={t("addressWallet")}
                                             defaultValue=""
                                             name="addrWallet"
                                             helperText="8 digitos"
@@ -252,7 +290,7 @@ const Register = () => {
                                     </Grid>
 
                                     <Button type="submit" variant="outlined" style={{ background: 'linear-gradient(to bottom, #071520, #194D78)', boxShadow: ' 4px 4px 4px 4px rgba(0, 0, 0, 0.4)', color: "white", marginTop: "20px", marginBottom: "20px" }} >Sign in</Button>
-                                    <Link to="/login" style={{ color: "white" }} >Do you already have an account? Log in</Link>
+                                    <Link to="/login" style={{ color: "white" }} >{t("existAccount")}</Link>
                                 </Grid>
                             </form>
                         </Paper>

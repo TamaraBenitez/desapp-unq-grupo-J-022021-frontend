@@ -1,0 +1,17 @@
+{
+
+    "userLabel": "Nombre de usuario", 
+    "passwordLabel": "Contraseña",
+    "loginButton": "Iniciar sesion",
+    "signIn": "Registrarse",
+    "name" : "Nombre" ,
+    "lastName": "Apellido" ,
+    "email" : "Email" ,
+    "address": "Direccion" ,
+    "cvu":"CVU" ,
+    "addressWallet": "Direccion de billetera" ,
+    "existAccount": "Ya tienes una cuenta? Inicia sesion" , 
+    "notAccount" : "Todavia no tienes una cuenta? Crea una nueva"
+
+
+}
