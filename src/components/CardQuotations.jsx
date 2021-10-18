@@ -14,12 +14,33 @@ const useStyles = makeStyles({
     left: "80%",
     paddingRight: "30px",
 
+    ["@media (max-width:1189px)"]: {
+      position: "absolute",
+      left: "73%",
+      paddingRight: "0px",
+    },
+
     ["@media (max-width:889px)"]: {
+      position: "absolute",
+      left: "65%",
+      paddingRight: "2px",
+    },
+    ["@media (max-width:770px)"]: {
       position: "absolute",
       left: "55%",
       paddingRight: "2px",
     },
-    ["@media (max-width:375px)"]: {
+    ["@media (max-width:630px)"]: {
+      position: "absolute",
+      
+      paddingRight: "30px",
+    },
+    ["@media (max-width:579px)"]: {
+      position: "absolute",
+      
+      paddingRight: "30px",
+    },
+    ["@media (max-width:430px)"]: {
       position: "relative",
       left: 0,
       padding: "0px !important",

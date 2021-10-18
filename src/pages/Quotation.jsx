@@ -46,7 +46,7 @@ const Quotation = () => {
                 </div>
 
                 <div style={{marginTop:"150px"}}>
-                        <CardWrap>
+                        <CardWrap style={{backgroundColor:"black",marginLeft:"20px",marginRight:"20px"}}>
 
                         {
                             listQuotation.map(list => (
