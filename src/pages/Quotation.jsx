@@ -50,7 +50,7 @@ const Quotation = () => {
 
                         {
                             listQuotation.map(list => (
-                                <CardQuotations symbol={list.symbol} hour={dayjs(list.hourCotization).format('HH:mm')} price={list.priceArs} />
+                                <CardQuotations symbol={list.symbol.slice(0, -4)} hour={dayjs(list.hourCotization).format('HH:mm')} price={list.priceArs} />
 
 
                             ))

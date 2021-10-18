@@ -54,6 +54,20 @@ const CardQuotations = ({ symbol, hour, price }) => {
   const handleBuy = () => {
     console.log(symbol.slice(0, -4));
   };
+  
+  const asoc ={
+    BTC:"https://s2.coinmarketcap.com/static/img/coins/32x32/1.png",
+    ETH:"https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png",
+    BNB:"https://s2.coinmarketcap.com/static/img/coins/32x32/1839.png", 
+    NEO:"https://s2.coinmarketcap.com/static/img/coins/32x32/1376.png",
+    MATIC:"https://s2.coinmarketcap.com/static/img/coins/32x32/3890.png", 
+    ATOM:"https://s2.coinmarketcap.com/static/img/coins/32x32/3794.png", 
+    DOT:"https://s2.coinmarketcap.com/static/img/coins/32x32/6636.png", 
+    AAVE:"https://s2.coinmarketcap.com/static/img/coins/32x32/7278.png",
+    AXS:"https://s2.coinmarketcap.com/static/img/coins/32x32/6783.png", 
+    CAKE:"https://s2.coinmarketcap.com/static/img/coins/32x32/7186.png",
+    ALICE:"https://s2.coinmarketcap.com/static/img/coins/32x32/8766.png",
+  }
 
   return (
     <div>
@@ -69,7 +83,8 @@ const CardQuotations = ({ symbol, hour, price }) => {
             variant="h5"
             component="div"
           >
-            {symbol.slice(0, -4)}
+            <img src={asoc[symbol]} alt="iconCrypt" width="20" height="20" style={{paddingRight: "10px"}} />
+             {symbol}
           </Typography>
           <Grid
             container
