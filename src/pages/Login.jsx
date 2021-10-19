@@ -40,7 +40,7 @@ const Login = () => {
 
     const classes = useStyles();
     const history = useHistory();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [data,setData] = useState({
         username:"",
         password: ""
@@ -53,16 +53,12 @@ const Login = () => {
 	};
 
     const handleSubmit = (event) => {
-
-        localStorage.clear()
         event.preventDefault();
         API_Login.postLogin(data)
         .then((response)=> {
-
-            if(response !== undefined && response.data !== undefined){
                 localStorage.setItem("token",response.data.accessToken)
                 history.push("/quotations");
-                }
+                
         })
 
 

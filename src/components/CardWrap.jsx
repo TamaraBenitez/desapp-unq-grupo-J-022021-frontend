@@ -2,42 +2,42 @@ import React from "react";
 import {makeStyles} from "@mui/styles";
 import {Card,Fade} from '@mui/material';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme=>({
     root: {
       minWidth: 275,
       minHeight: 469,
       borderRadius: "4px",
       marginLeft:"8px",
       marginRight:"8px",
-      ['@media (max-width:768px)']: { 
+      [theme.breakpoints.down(768)]:{
         marginLeft:"90px!important",
         marginRight:"90px!important"
       },
-      ['@media (max-width:725px)']: { 
+      [theme.breakpoints.down(725)]:{
         marginLeft:"70px!important",
-        marginRight:"70px!important"
+        marginRight:"70px!important" 
       },
-      ['@media (max-width:579px)']: { 
+      [theme.breakpoints.down(579)]:{
         marginLeft:"40px!important",
-        marginRight:"40px!important",
+        marginRight:"40px!important",      
       },
-      ['@media (max-width:550px)']: { 
+      [theme.breakpoints.down(550)]:{
         marginLeft:"20px!important",
         marginRight:"20px!important",
       },
-      ['@media (max-width:472px)']: { 
-        marginLeft:"5px!important",
-        marginRight:"5px!important",
+      [theme.breakpoints.down(472)]:{
+        marginLeft:"20px!important",
+        marginRight:"20px!important",
       },
-      ['@media (max-width:401px)']: { 
+      [theme.breakpoints.down(401)]:{
         marginLeft:"0px!important",
         marginRight:"0px!important",
-      }
+      },
     },
     bullet: {
       display: "inline-block",
     },
-  });
+  }));
   
   
   

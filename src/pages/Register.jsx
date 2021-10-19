@@ -47,7 +47,7 @@ const Register = () => {
         addrWallet: ""
     });
     const history = useHistory();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [isShowPassword, setIsShowPassword] = useState(false);
 
 
@@ -60,10 +60,10 @@ const Register = () => {
         event.preventDefault();
         API_Register.postRegister(data)
         .then((response)=> {
-            if(response !== undefined && response.data !== undefined){
+           
             localStorage.setItem("token",response.data.accessToken)
             history.push("/login");
-            }
+            
         })
         .catch(error=> {console.log(error.response.data.error_msg)})
     }
