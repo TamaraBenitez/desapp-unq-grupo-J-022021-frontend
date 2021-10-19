@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import ListItem from "@mui/material/ListItem";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme=>({
   root: {
     backgroundColor: "#98FCEE",
   },
@@ -13,40 +13,38 @@ const useStyles = makeStyles({
     position: "absolute",
     left: "80%",
     paddingRight: "30px",
-
-    ["@media (max-width:1189px)"]: {
+    
+    [theme.breakpoints.down(1189)]:{
       position: "absolute",
       left: "73%",
       paddingRight: "0px",
-    },
-
-    ["@media (max-width:889px)"]: {
+        },
+    [theme.breakpoints.down(889)]:{
       position: "absolute",
       left: "65%",
-      paddingRight: "2px",
+      paddingRight: "2px",        
     },
-    ["@media (max-width:770px)"]: {
+    [theme.breakpoints.down(770)]:{
       position: "absolute",
       left: "55%",
       paddingRight: "2px",
-    },
-    ["@media (max-width:630px)"]: {
+        },    
+    [theme.breakpoints.down(630)]:{
       position: "absolute",
-      
       paddingRight: "30px",
-    },
-    ["@media (max-width:579px)"]: {
-      position: "absolute",
-      
+      },    
+    [theme.breakpoints.down(579)]:{
+      position: "absolute", 
       paddingRight: "30px",
-    },
-    ["@media (max-width:430px)"]: {
+     },    
+    [theme.breakpoints.down(430)]:{
       position: "relative",
       left: 0,
-      padding: "0px !important",
-    },
+      padding: "0px !important",     
+    },    
+
   },
-});
+}));
 
 const CardQuotations = ({ symbol, hour, price }) => {
   const classes = useStyles();
