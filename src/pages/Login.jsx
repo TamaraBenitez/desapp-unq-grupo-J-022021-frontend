@@ -54,6 +54,7 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        localStorage.clear();
         API_Login.postLogin(data)
         .then((response)=> {
                 localStorage.setItem("token",response.data.accessToken)

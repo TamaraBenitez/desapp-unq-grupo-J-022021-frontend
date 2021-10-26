@@ -4,7 +4,9 @@ import { BrowserRouter, Switch,Redirect, Route} from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Quotation from './pages/Quotation';
+import Transaction from './pages/Transaction';
 import { createTheme, ThemeProvider} from '@mui/material/styles';
+import ModalTransaction from './components/ModalTransaction';
 
 
 const App = () => {
@@ -23,8 +25,9 @@ const App = () => {
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
               <Route path="/quotations" component={Quotation} />
-
-              <Redirect from="/" to="/register" />
+              <Route path="/transactions/negociate/:userId/activity/:activityId" component={Transaction}/>
+              <Route path="/model" component={ModalTransaction}/>
+              <Redirect from="/" to="/login" />
           </Switch>
       </BrowserRouter>
       </ThemeProvider>
