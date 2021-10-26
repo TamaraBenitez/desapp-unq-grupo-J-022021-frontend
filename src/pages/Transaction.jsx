@@ -165,11 +165,9 @@ const Transaction = () => {
                   </Typography>
                   <Button
                     className={classes.button}
-                    classes={{disabled: classes.disabledButton}}
-                    onClick={handleCompleteAndSendCripto}
-                    disabled={!completeSend}
+                    onClick={handleClickSendAmount}
                   >
-                    Liberar Criptoactivo
+                    Notificar envio
                   </Button>
                 </>
               )) || (
@@ -182,11 +180,12 @@ const Transaction = () => {
                   </Typography>
                   <Button
                     className={classes.button}
-                    onClick={handleClickSendAmount}
+                    classes={{disabled: classes.disabledButton}}
+                    onClick={handleCompleteAndSendCripto}
+                    disabled={!completeSend}
                   >
-                    Notificar envio
+                    Liberar Criptoactivo
                   </Button>
-                 
                 </>
               )}
 
