@@ -5,8 +5,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { makeStyles } from "@mui/styles";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { API_Transaction } from "../services/APITransaction";
+import ModalTransactionCanceled from "../components/ModalTransactionCanceled";
+import ModalTransactionCompleted from "../components/ModalTransactionCompleted";
+import ModalSendAmountNotify from "../components/ModalSendAmountNotify";
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({
@@ -15,14 +18,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#392255!important",
     "&:hover": {
       backgroundColor: "#392255!important",
-  },
+    },
   },
   disabledButton: {
-    '&.MuiButton-root.Mui-disabled' : {
+    "&.MuiButton-root.Mui-disabled": {
       backgroundColor: "grey!important",
-      color:"black!important", 
-      },
+      color: "black!important",
     },
+  },
   typographyStyle: {
     color: "white",
     fontSize: "16px",
@@ -39,6 +42,8 @@ const Transaction = () => {
   const [modalCancelOpen, setModalCancelOpen] = useState(false);
   const [sended, setSended] = useState(false);
   const [completeSend, setCompleteSend] = useState(false);
+  const [render, setRender] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     getDataUserTransationToTransfer();
@@ -47,12 +52,13 @@ const Transaction = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (transactionData === undefined) {
+      if (transactionData === undefined && !modalCancelOpen) {
         getDataUserTransationToTransfer();
       }
       if (!activeTransaction) {
         userConnectedTransaction();
       }
+      if(!sended || !completeSend)
       checkCompleteSend();
     }, 10000);
     return () => clearInterval(interval);
@@ -64,6 +70,7 @@ const Transaction = () => {
         setCompleteSend(res.data.active);
       })
       .catch((err) => {
+        console.log(err);
         setModalCancelOpen(true);
       });
   };
@@ -85,9 +92,7 @@ const Transaction = () => {
   };
 
   const sendAmount = () => {
-    API_Transaction.sendAmount().then((response) => {
-      setSended(true);
-    });
+    API_Transaction.sendAmount();
   };
 
   const handleClickSendAmount = () => {
@@ -109,7 +114,7 @@ const Transaction = () => {
   };
 
   const isBuy = () => {
-    return transactionData.addrOrCvu.length > 8;
+    return transactionData?.addrOrCvu?.length > 8;
   };
 
   return (
@@ -180,7 +185,7 @@ const Transaction = () => {
                   </Typography>
                   <Button
                     className={classes.button}
-                    classes={{disabled: classes.disabledButton}}
+                    classes={{ disabled: classes.disabledButton }}
                     onClick={handleCompleteAndSendCripto}
                     disabled={!completeSend}
                   >
@@ -201,6 +206,24 @@ const Transaction = () => {
           )}
         </CardWrap>
       </div>
+      <ModalTransactionCanceled
+        isOpen={modalCancelOpen}
+        handleBack={() => history.push("/quotations")}
+        userCancelledName={transactionData?.username}
+      />
+      <ModalTransactionCompleted
+        isOpen={isBuy() ? completeSend : sended}
+        handleBack={() => history.push("/quotations")}
+      />
+      {render && (
+        <ModalSendAmountNotify
+          isOpen={isBuy() ? false : completeSend}
+          handleBack={() => {
+            setRender(false);
+          }}
+          userCancelledName={transactionData?.username}
+        />
+      )}
     </Container>
   );
 };
