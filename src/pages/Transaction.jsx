@@ -11,6 +11,7 @@ import ModalTransactionCanceled from "../components/ModalTransactionCanceled";
 import ModalTransactionCompleted from "../components/ModalTransactionCompleted";
 import ModalSendAmountNotify from "../components/ModalSendAmountNotify";
 import { useModalTransaction } from "../components/modalStartTransactionProvider/hooks";
+import toast, { Toaster } from "react-hot-toast";
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({
@@ -65,9 +66,11 @@ const Transaction = () => {
       if (!activeTransaction) {
         userConnectedTransaction();
       }
-      if(!sended || !completeSend)
+      if(!sended || !completeSend){
+        console.log("exec")
       checkCompleteSend();
-    }, 10000);
+    }
+    }, 5000);
     return () => clearInterval(interval);
   });
 
@@ -110,8 +113,12 @@ const Transaction = () => {
   };
 
   const handleCancelTransaction = () => {
+    toast.error('Transaction was canceled')
     API_Transaction.cancelTransaction();
+    history.push("/quotations")
   };
+
+ 
 
   const handleCompleteAndSendCripto = () => {
     API_Transaction.finishTransaction(activityId, userId).then((response) => {
@@ -213,7 +220,7 @@ const Transaction = () => {
         </CardWrap>
       </div>
       <ModalTransactionCanceled
-        isOpen={modalCancelOpen}
+        isOpen={modalCancelOpen && !sended & !completeSend}
         handleBack={() => history.push("/quotations")}
         userCancelledName={transactionData?.username}
       />

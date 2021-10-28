@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import CardQuotations from "../components/CardQuotations";
 import CardWrap from "../components/CardWrap";
 import Navbar from "../components/NavBar";
+import { Toaster } from "react-hot-toast";
 const dayjs = require("dayjs");
 
 const Quotation = () => {
@@ -26,8 +27,8 @@ const Quotation = () => {
 
   return (
     <Container disableGutters maxWidth={false} className="conteiner-color">
-    <Navbar/>
-   
+      <Navbar />
+
       <div className="container-welcome">
         <span className="welcome"> {t("Cotizations")} </span>
       </div>
@@ -50,8 +51,25 @@ const Quotation = () => {
           ))}
         </CardWrap>
       </div>
+      <Toaster
+        reverseOrder={false}
+        toastOptions={{
+          success: {
+            style: {
+              color: "white",
+              background: "black",
+            },
+          },
+          error: {
+            style: {
+              color: "white",
+              background: "black",
+            },
+          },
+        }}
+      />
     </Container>
-    );
+  );
 };
 
 export default Quotation;
