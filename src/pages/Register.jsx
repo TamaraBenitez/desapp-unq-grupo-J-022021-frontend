@@ -9,12 +9,13 @@ import CardWrap from '../components/CardWrap';
 import Button from '@mui/material/Button';
 import { makeStyles } from "@mui/styles";
 import { Link,useHistory } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { API_Register } from '../services/APIRegister';
 import { useTranslation } from "react-i18next";
 import { InputAdornment, IconButton} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useModalTransaction } from '../components/modalStartTransactionProvider/hooks';
 
 
 
@@ -49,7 +50,11 @@ const Register = () => {
     const history = useHistory();
     const { t } = useTranslation();
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const {block,unblock}=useModalTransaction()
 
+    useEffect(() => {block()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     const changeVisualization = () => {
 		setIsShowPassword(!isShowPassword);
@@ -60,9 +65,9 @@ const Register = () => {
         event.preventDefault();
         API_Register.postRegister(data)
         .then((response)=> {
-           
+            unblock()
             localStorage.setItem("token",response.data.accessToken)
-            history.push("/login");
+            history.push("/quotations");
             
         })
         .catch(error=> {console.log(error.response.data.error_msg)})

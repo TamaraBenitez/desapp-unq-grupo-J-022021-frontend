@@ -10,6 +10,7 @@ import { API_Transaction } from "../services/APITransaction";
 import ModalTransactionCanceled from "../components/ModalTransactionCanceled";
 import ModalTransactionCompleted from "../components/ModalTransactionCompleted";
 import ModalSendAmountNotify from "../components/ModalSendAmountNotify";
+import { useModalTransaction } from "../components/modalStartTransactionProvider/hooks";
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({
@@ -44,11 +45,17 @@ const Transaction = () => {
   const [completeSend, setCompleteSend] = useState(false);
   const [render, setRender] = useState(true);
   const history = useHistory();
+  const {block,unblock}=useModalTransaction()
+
 
   useEffect(() => {
+    block()
     getDataUserTransationToTransfer();
     userConnectedTransaction();
+    return ()=>unblock()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,7 +77,6 @@ const Transaction = () => {
         setCompleteSend(res.data.active);
       })
       .catch((err) => {
-        console.log(err);
         setModalCancelOpen(true);
       });
   };
@@ -80,7 +86,7 @@ const Transaction = () => {
       .then((response) => {
         setActiveTransaction(response.data.active);
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>{});
   };
 
   const getDataUserTransationToTransfer = () => {
@@ -88,7 +94,7 @@ const Transaction = () => {
       .then((response) => {
         setTransactionData(response.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {});
   };
 
   const sendAmount = () => {
@@ -213,7 +219,7 @@ const Transaction = () => {
       />
       <ModalTransactionCompleted
         isOpen={isBuy() ? completeSend : sended}
-        handleBack={() => history.push("/quotations")}
+        handleBack={() =>{unblock() ; history.push("/quotations")}}
       />
       {render && (
         <ModalSendAmountNotify

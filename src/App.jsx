@@ -6,8 +6,7 @@ import Login from './pages/Login';
 import Quotation from './pages/Quotation';
 import Transaction from './pages/Transaction';
 import { createTheme, ThemeProvider} from '@mui/material/styles';
-import ModalTransaction from './components/ModalTransaction';
-import ModalProvider from './components/backModalProvider';
+import ModalTransactionProvider from './components/modalStartTransactionProvider';
 
 
 const App = () => {
@@ -22,16 +21,15 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
     <BrowserRouter>
-      <ModalProvider> 
+      <ModalTransactionProvider>
           <Switch>
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
               <Route path="/quotations" component={Quotation} />
               <Route path="/transactions/negociate/:userId/activity/:activityId" component={Transaction}/>
-              <Route path="/model" component={ModalTransaction}/>
               <Redirect from="/" to="/login" />
           </Switch>
-        </ModalProvider>
+          </ModalTransactionProvider>
       </BrowserRouter>
       </ThemeProvider>
   );

@@ -42,6 +42,7 @@ const Quotation = () => {
         >
           {listQuotation.map((list) => (
             <CardQuotations
+              key={list.symbol}
               symbol={list.symbol.slice(0, -4)}
               hour={dayjs(list.hourCotization).format("HH:mm")}
               price={list.priceArs}

@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const ModalTransaction = ({ isOpen = true }) => {
+const ModalTransaction = ({ isOpen,setOpen,blockExec }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const history = useHistory();
@@ -74,28 +74,28 @@ const ModalTransaction = ({ isOpen = true }) => {
   const [dataTransaction, setDataTransaction] = useState();
 
   useEffect(() => {
-    checkInitTransaction();
-  }, []);
-
-  useEffect(() => {
+    if(!blockExec && !isOpen){
     const interval = setInterval(() => {
       checkInitTransaction();
-    }, 10000);
+    }, 5000);
     return () => clearInterval(interval);
-  });
+  }});
 
   const checkInitTransaction = () => {
     API_Transaction.checkInitTransaction()
       .then((response) => {
+        setOpen(response.data.active)
         setLoading(!response.data.active);
         setDataTransaction(response.data);
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
+
+
   const startTransaction = () => {
+    setOpen(false)
     history.push(
       `/transactions/negociate/${dataTransaction.id}/activity/${dataTransaction.activityId}`
     );

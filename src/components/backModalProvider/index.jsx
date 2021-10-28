@@ -32,7 +32,7 @@ const ModalProvider = ({ children }) => {
             setActive(false)
             setShowPrompt(false);
         }
-  }, [currentPath, history, onOk]);
+  }, [ history, onOk]);
 
   const handleCancel = useCallback(async () => {
     if (onCancel) { 

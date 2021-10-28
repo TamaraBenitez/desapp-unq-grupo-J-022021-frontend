@@ -1,7 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import ModalBack from "./ModalBack";
-import { useModalBack } from "../components/backModalProvider/hooks";
 
 export const CustomRouterPrompt=(props)=> {
   const { showPrompt,handleCancel,handleOK,currentPath} = props;

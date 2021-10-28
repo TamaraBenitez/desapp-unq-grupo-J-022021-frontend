@@ -11,10 +11,11 @@ import Button from '@mui/material/Button';
 import { Link,useHistory } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { API_Login } from '../services/APILogin';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InputAdornment, IconButton} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useModalTransaction } from '../components/modalStartTransactionProvider/hooks';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +47,11 @@ const Login = () => {
         password: ""
     });
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const {block,unblock} =useModalTransaction()
 
+
+    useEffect(() => {block()// eslint-disable-next-line
+    }, [])
 
     const changeVisualization = () => {
 		setIsShowPassword(!isShowPassword);
@@ -57,6 +62,7 @@ const Login = () => {
         localStorage.clear();
         API_Login.postLogin(data)
         .then((response)=> {
+                unblock()
                 localStorage.setItem("token",response.data.accessToken)
                 history.push("/quotations");
                 
