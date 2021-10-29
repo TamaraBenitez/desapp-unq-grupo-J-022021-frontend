@@ -14,5 +14,23 @@ const httpClient = axios.create({
         config.headers.Authorization =  token ? `${token}` : '';
         return config;
       });
+
+      httpClient.interceptors.response.use(
+        (response) => {
+          return response;
+        },
+        async(error) =>{
+          const originalRequest = error.config;
+              
+          if (error.response !==undefined && error.response.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+            localStorage.clear()     
+           return httpClient(originalRequest);
+          }
+      
+          return Promise.reject(error);
+        }
+      );
+      
       
 export {httpClient};

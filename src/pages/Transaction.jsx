@@ -11,7 +11,7 @@ import ModalTransactionCanceled from "../components/ModalTransactionCanceled";
 import ModalTransactionCompleted from "../components/ModalTransactionCompleted";
 import ModalSendAmountNotify from "../components/ModalSendAmountNotify";
 import { useModalTransaction } from "../components/modalStartTransactionProvider/hooks";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({

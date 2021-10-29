@@ -21,7 +21,6 @@ import { useModalTransaction } from '../components/modalStartTransactionProvider
 const useStyles = makeStyles((theme) => ({
 
     titleSignStyle: {
-
         letterSpacing: "0.18px",
         color: "white",
         paddingTop: "20px",
@@ -29,10 +28,6 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Crimson Text',
         fontSize: "30px"
     }
-
-
-
-
 }))
 
 
@@ -139,9 +134,9 @@ const Login = () => {
                                     onChange={handleInputChange}
 
                                     inputProps={{
-                                        autocomplete: "new-password",
+                                        autoComplete: "new-password",
                                         form: {
-                                            autocomplete: "off",
+                                            autoComplete: "off",
                                         },
                                     }}
                                 />
@@ -182,9 +177,9 @@ const Login = () => {
 
 
                                     inputProps={{
-                                        autocomplete: "new-password",
+                                        autoComplete: "new-password",
                                         form: {
-                                            autocomplete: "off",
+                                            autoComplete: "off",
                                         },
                                     }}
                                 />
