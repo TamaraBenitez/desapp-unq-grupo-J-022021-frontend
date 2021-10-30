@@ -7,7 +7,8 @@ import Quotation from './pages/Quotation';
 import Transaction from './pages/Transaction';
 import { createTheme, ThemeProvider} from '@mui/material/styles';
 import ModalTransactionProvider from './components/modalStartTransactionProvider';
-
+import PrivateRoute from './components/routeTypes/PrivateRoute'
+import PublicRoute from './components/routeTypes/PublicRoute'
 
 const App = () => {
 
@@ -23,10 +24,10 @@ const App = () => {
     <BrowserRouter>
       <ModalTransactionProvider>
           <Switch>
-              <Route path="/register" component={Register} />
-              <Route path="/login" component={Login} />
-              <Route path="/quotations" component={Quotation} />
-              <Route path="/transactions/negociate/:userId/activity/:activityId" component={Transaction}/>
+              <PublicRoute path="/register" component={Register} />
+              <PublicRoute path="/login" component={Login} />
+              <PrivateRoute path="/quotations" component={Quotation} />
+              <PrivateRoute path="/transactions/negociate/:userId/activity/:activityId" component={Transaction}/>
               <Redirect from="/" to="/login" />
           </Switch>
           </ModalTransactionProvider>

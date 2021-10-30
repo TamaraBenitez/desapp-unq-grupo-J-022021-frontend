@@ -24,7 +24,8 @@ const httpClient = axios.create({
               
           if (error.response !==undefined && error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            localStorage.clear()     
+            localStorage.clear() 
+            window.location.reload();    
            return httpClient(originalRequest);
           }
       
