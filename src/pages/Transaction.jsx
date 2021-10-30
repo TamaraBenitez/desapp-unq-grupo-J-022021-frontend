@@ -12,6 +12,7 @@ import ModalTransactionCompleted from "../components/ModalTransactionCompleted";
 import ModalSendAmountNotify from "../components/ModalSendAmountNotify";
 import { useModalTransaction } from "../components/modalStartTransactionProvider/hooks";
 import toast from "react-hot-toast";
+import {FormattedNumber} from 'react-intl'
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({
@@ -155,10 +156,10 @@ const Transaction = () => {
                 Cantidad de criptoactivo: {transactionData.nominals}
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Cotizacion: ${transactionData.cotization} ARS
+                Cotizacion: <FormattedNumber value={transactionData.cotization} style={"currency"} currency="ARS"/> 
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Monto a negociar: ${transactionData.amountInArs} ARS
+                Monto a negociar: <FormattedNumber value={transactionData.amountInArs} style={"currency"} currency="ARS"/>
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
                 Nombre y apellido : {transactionData.username}{" "}

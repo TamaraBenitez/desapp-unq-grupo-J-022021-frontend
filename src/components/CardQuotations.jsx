@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import ListItem from "@mui/material/ListItem";
+import {FormattedNumber} from 'react-intl'
+
 
 const useStyles = makeStyles(theme=>({
   root: {
@@ -91,7 +93,7 @@ const CardQuotations = ({ symbol, hour, price }) => {
             alignItems="center"
           >
             <Typography sx={{ color: "white" }} variant="h5" component="div">
-              $ {price.replace(/[,.]/g, (m) => (m === "," ? "." : ","))} ARS
+              <FormattedNumber value={price} style="currency" currency="ARS"/>
             </Typography>
             <Grid
               container
