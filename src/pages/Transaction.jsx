@@ -12,7 +12,7 @@ import ModalTransactionCompleted from "../components/ModalTransactionCompleted";
 import ModalSendAmountNotify from "../components/ModalSendAmountNotify";
 import { useModalTransaction } from "../components/modalStartTransactionProvider/hooks";
 import toast from "react-hot-toast";
-import {FormattedNumber} from 'react-intl'
+import { FormattedNumber } from "react-intl";
 import ModalConfirmCancel from "../components/ModalConfirmCancel";
 const dayjs = require("dayjs");
 
@@ -48,17 +48,17 @@ const Transaction = () => {
   const [completeSend, setCompleteSend] = useState(false);
   const [render, setRender] = useState(true);
   const history = useHistory();
-  const {block,unblock}=useModalTransaction()
-  const [open,setOpen]=useState(false)
+  const { block, unblock } = useModalTransaction();
+  const [open, setOpen] = useState(false);
+  const [notified, setNotified] = useState(false);
 
   useEffect(() => {
-    block()
+    block();
     getDataUserTransationToTransfer();
     userConnectedTransaction();
-    return ()=>unblock()
+    return () => unblock();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -68,10 +68,10 @@ const Transaction = () => {
       if (!activeTransaction) {
         userConnectedTransaction();
       }
-      if(!sended || !completeSend){
-        console.log("exec")
-      checkCompleteSend();
-    }
+      if (!sended || !completeSend) {
+        console.log("exec");
+        checkCompleteSend();
+      }
     }, 5000);
     return () => clearInterval(interval);
   });
@@ -91,7 +91,7 @@ const Transaction = () => {
       .then((response) => {
         setActiveTransaction(response.data.active);
       })
-      .catch((error) =>{});
+      .catch((error) => {});
   };
 
   const getDataUserTransationToTransfer = () => {
@@ -110,18 +110,19 @@ const Transaction = () => {
     API_Transaction.checkCompleteSend(userId)
       .then((response) => {
         sendAmount();
-        toast.success("Se ha enviado el monto a la cuenta de destino");
+        setNotified(true);
+        toast.success(
+          "Se ha notificado el envio del monto a la cuenta de destino"
+        );
       })
       .catch((error) => setModalCancelOpen(true));
   };
 
   const handleCancelTransaction = () => {
-    toast.error('Transaction was canceled')
+    toast.error("Transaction was canceled");
     API_Transaction.cancelTransaction();
-    history.push("/quotations")
+    history.push("/quotations");
   };
-
- 
 
   const handleCompleteAndSendCripto = () => {
     API_Transaction.finishTransaction(activityId, userId).then((response) => {
@@ -134,12 +135,12 @@ const Transaction = () => {
   };
 
   const openModal = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const closeModal = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <Container disableGutters maxWidth={false} className="conteiner-color">
@@ -166,10 +167,20 @@ const Transaction = () => {
                 Cantidad de criptoactivo: {transactionData.nominals}
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Cotizacion: <FormattedNumber value={transactionData.cotization} style={"currency"} currency="ARS"/> 
+                Cotizacion:{" "}
+                <FormattedNumber
+                  value={transactionData.cotization}
+                  style={"currency"}
+                  currency="ARS"
+                />
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Monto a negociar: <FormattedNumber value={transactionData.amountInArs} style={"currency"} currency="ARS"/>
+                Monto a negociar:{" "}
+                <FormattedNumber
+                  value={transactionData.amountInArs}
+                  style={"currency"}
+                  currency="ARS"
+                />
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
                 Nombre y apellido : {transactionData.username}{" "}
@@ -194,7 +205,9 @@ const Transaction = () => {
                   </Typography>
                   <Button
                     className={classes.button}
+                    classes={{ disabled: classes.disabledButton }}
                     onClick={handleClickSendAmount}
+                    disabled={notified}
                   >
                     Notificar envio
                   </Button>
@@ -220,10 +233,7 @@ const Transaction = () => {
 
               <div style={{ paddingTop: "10px" }}></div>
 
-              <Button
-                className={classes.button}
-                onClick={openModal}
-              >
+              <Button className={classes.button} onClick={openModal}>
                 Cancelar Transacción
               </Button>
             </>
@@ -237,9 +247,16 @@ const Transaction = () => {
       />
       <ModalTransactionCompleted
         isOpen={isBuy() ? completeSend : sended}
-        handleBack={() =>{unblock() ; history.push("/quotations")}}
+        handleBack={() => {
+          unblock();
+          history.push("/quotations");
+        }}
       />
-      <ModalConfirmCancel isOpen={open} handleCancelTransaction={handleCancelTransaction} handleCancel={closeModal}/>
+      <ModalConfirmCancel
+        isOpen={open}
+        handleCancelTransaction={handleCancelTransaction}
+        handleCancel={closeModal}
+      />
       {render && (
         <ModalSendAmountNotify
           isOpen={isBuy() ? false : completeSend}

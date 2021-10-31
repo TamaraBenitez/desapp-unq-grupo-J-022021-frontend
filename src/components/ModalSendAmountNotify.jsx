@@ -1,13 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Backdrop,
-  Button,
-  Fade,
-  Grid,
-  Modal,
-} from "@mui/material";
+import { Backdrop, Button, Fade, Grid, Modal } from "@mui/material";
 import { makeStyles, createStyles } from "@mui/styles";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -34,6 +29,7 @@ const useStyles = makeStyles((theme) =>
       border: `1px solid black`,
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+      zIndex: "1301",
     },
     closeColorIcon: {
       position: "absolute",
@@ -47,9 +43,10 @@ const useStyles = makeStyles((theme) =>
       fontStyle: "normal",
       fontWeight: "normal",
       fontSize: "16px",
-      lineHeight: "24px",
+      lineHeight: "25px",
       letterSpacing: "0.15px",
       color: "white",
+      marginBottom: "20px",
     },
 
     delete: {
@@ -63,11 +60,10 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const ModalSendAmountNotify = ({ isOpen, handleBack , userCancelledName}) => {
+const ModalSendAmountNotify = ({ isOpen, handleBack, userCancelledName }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  
-  
+
   return (
     <div>
       <Modal
@@ -86,20 +82,32 @@ const ModalSendAmountNotify = ({ isOpen, handleBack , userCancelledName}) => {
           <div className={classes.modalBackground} tabIndex={0}>
             <Grid
               container
-              direction="row"
-              justify="flex-start"
-              alignItems="flex-start"
+              direction="column"
+              justify="center"
+              alignItems="center"
             >
-                <h3 className={classes.save}>{userCancelledName} send amount check bank account</h3>
+              <CheckCircleRoundedIcon
+                style={{ color: "green", width: "auto", height: "6em" }}
+              />
             </Grid>
             <Grid
-                  container
-                  direction="column"
-                  justify="center"
-                  alignItems="center"
-                >
-                  <Button onClick={handleBack}>continue transaction</Button>
-               </Grid>
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <div className={classes.save}>
+                {userCancelledName} send amount, check bank account
+              </div>
+            </Grid>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <Button onClick={handleBack}>continue transaction</Button>
+            </Grid>
           </div>
         </Fade>
       </Modal>

@@ -1,13 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Backdrop,
-  Button,
-  Fade,
-  Grid,
-  Modal,
-} from "@mui/material";
+import { Backdrop, Button, Fade, Grid, Modal } from "@mui/material";
 import { makeStyles, createStyles } from "@mui/styles";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -34,6 +29,7 @@ const useStyles = makeStyles((theme) =>
       border: `1px solid black`,
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+      zIndex: "1301",
     },
     closeColorIcon: {
       position: "absolute",
@@ -63,11 +59,10 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const ModalTransactionCompleted = ({ isOpen, handleBack}) => {
+const ModalTransactionCompleted = ({ isOpen, handleBack }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  
-  
+
   return (
     <div>
       <Modal
@@ -86,20 +81,32 @@ const ModalTransactionCompleted = ({ isOpen, handleBack}) => {
           <div className={classes.modalBackground} tabIndex={0}>
             <Grid
               container
-              direction="row"
-              justify="flex-start"
-              alignItems="flex-start"
+              direction="column"
+              justify="center"
+              alignItems="center"
             >
-                <h3 className={classes.save}>Transaction was completed successfully :)</h3> 
+              <CheckCircleRoundedIcon
+                style={{ color: "green", width: "auto", height: "6em" }}
+              />
             </Grid>
             <Grid
-                  container
-                  direction="column"
-                  justify="center"
-                  alignItems="center"
-                >
-                  <Button onClick={handleBack}>back to quotations </Button> 
-         </Grid>
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <h3 className={classes.save}>
+                Transaction was completed successfully
+              </h3>
+            </Grid>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <Button onClick={handleBack}>back to quotations </Button>
+            </Grid>
           </div>
         </Fade>
       </Modal>

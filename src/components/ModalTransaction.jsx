@@ -37,6 +37,8 @@ const useStyles = makeStyles((theme) =>
       border: `1px solid black`,
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+      zIndex: "1301",
+
     },
     closeColorIcon: {
       position: "absolute",
