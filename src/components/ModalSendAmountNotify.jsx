@@ -92,8 +92,14 @@ const ModalSendAmountNotify = ({ isOpen, handleBack , userCancelledName}) => {
             >
                 <h3 className={classes.save}>{userCancelledName} send amount check bank account</h3>
             </Grid>
+            <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                >
                   <Button onClick={handleBack}>continue transaction</Button>
-               
+               </Grid>
           </div>
         </Fade>
       </Modal>

@@ -92,7 +92,14 @@ const ModalTransactionCompleted = ({ isOpen, handleBack}) => {
             >
                 <h3 className={classes.save}>Transaction was completed successfully :)</h3> 
             </Grid>
+            <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                >
                   <Button onClick={handleBack}>back to quotations </Button> 
+         </Grid>
           </div>
         </Fade>
       </Modal>

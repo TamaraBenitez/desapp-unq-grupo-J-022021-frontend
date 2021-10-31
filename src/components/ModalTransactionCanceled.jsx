@@ -92,8 +92,14 @@ const ModalTransactionCanceled = ({ isOpen, handleBack , userCancelledName}) => 
             >
                 <h3 className={classes.save}>{userCancelledName} has been cancelled the transaction</h3>
             </Grid>
+            <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                >
                   <Button onClick={handleBack}>back to quotations</Button>
-               
+               </Grid>
           </div>
         </Fade>
       </Modal>

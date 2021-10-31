@@ -109,6 +109,7 @@ const Transaction = () => {
     API_Transaction.checkCompleteSend(userId)
       .then((response) => {
         sendAmount();
+        toast.success("Se ha enviado el monto a la cuenta de destino");
       })
       .catch((error) => setModalCancelOpen(true));
   };
