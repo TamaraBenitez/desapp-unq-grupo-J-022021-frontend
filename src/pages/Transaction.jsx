@@ -13,6 +13,7 @@ import ModalSendAmountNotify from "../components/ModalSendAmountNotify";
 import { useModalTransaction } from "../components/modalStartTransactionProvider/hooks";
 import toast from "react-hot-toast";
 import {FormattedNumber} from 'react-intl'
+import ModalConfirmCancel from "../components/ModalConfirmCancel";
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +49,7 @@ const Transaction = () => {
   const [render, setRender] = useState(true);
   const history = useHistory();
   const {block,unblock}=useModalTransaction()
-
+  const [open,setOpen]=useState(false)
 
   useEffect(() => {
     block()
@@ -132,6 +133,14 @@ const Transaction = () => {
     return transactionData?.addrOrCvu?.length > 8;
   };
 
+  const openModal = () => {
+    setOpen(true)
+  }
+
+  const closeModal = () => {
+    setOpen(false)
+  }
+
   return (
     <Container disableGutters maxWidth={false} className="conteiner-color">
       <Navbar />
@@ -213,7 +222,7 @@ const Transaction = () => {
 
               <Button
                 className={classes.button}
-                onClick={handleCancelTransaction}
+                onClick={openModal}
               >
                 Cancelar Transacción
               </Button>
@@ -230,6 +239,7 @@ const Transaction = () => {
         isOpen={isBuy() ? completeSend : sended}
         handleBack={() =>{unblock() ; history.push("/quotations")}}
       />
+      <ModalConfirmCancel isOpen={open} handleCancelTransaction={handleCancelTransaction} handleCancel={closeModal}/>
       {render && (
         <ModalSendAmountNotify
           isOpen={isBuy() ? false : completeSend}
