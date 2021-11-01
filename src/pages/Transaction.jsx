@@ -14,6 +14,7 @@ import { useModalTransaction } from "../components/modalStartTransactionProvider
 import toast from "react-hot-toast";
 import { FormattedNumber } from "react-intl";
 import ModalConfirmCancel from "../components/ModalConfirmCancel";
+import { CircularProgress, Grid } from "@mui/material";
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({
@@ -26,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
   disabledButton: {
     "&.MuiButton-root.Mui-disabled": {
-      backgroundColor: "grey!important",
-      color: "black!important",
+      background: "grey!important",
+      color: "white!important",
     },
   },
   typographyStyle: {
@@ -35,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "16px",
     marginTop: "10px",
     paddingRight: "100px",
+  },
+  alignLoader: {
+    paddingTop: "200px",
   },
 }));
 
@@ -155,6 +159,23 @@ const Transaction = () => {
             height: "100px",
           }}
         >
+          {(!activeTransaction || transactionData === undefined) && (
+            <>
+              <Grid
+                container
+                className={classes.alignLoader}
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <CircularProgress />
+                <label style={{ color: "grey", marginTop: 10 }}>
+                  waiting for user
+                </label>
+              </Grid>
+            </>
+          )}
+          <div style={{marginLeft:"30px",marginTop:30}}>
           {activeTransaction && transactionData !== undefined && (
             <>
               <Typography className={classes.typographyStyle} component="div">
@@ -204,6 +225,14 @@ const Transaction = () => {
                     CVU :{transactionData.addrOrCvu}
                   </Typography>
                   <Button
+                    variant="outlined"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, #071520, #194D78)",
+                      boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
+                      color: "white",
+                      marginTop:15,
+                    }}
                     className={classes.button}
                     classes={{ disabled: classes.disabledButton }}
                     onClick={handleClickSendAmount}
@@ -221,6 +250,14 @@ const Transaction = () => {
                     Direccion de billetera : {transactionData.addrOrCvu}
                   </Typography>
                   <Button
+                    variant="outlined"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, #071520, #194D78)",
+                      boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
+                      color: "white",
+                      marginTop:15,
+                    }}
                     className={classes.button}
                     classes={{ disabled: classes.disabledButton }}
                     onClick={handleCompleteAndSendCripto}
@@ -233,11 +270,21 @@ const Transaction = () => {
 
               <div style={{ paddingTop: "10px" }}></div>
 
-              <Button className={classes.button} onClick={openModal}>
+              <Button
+                variant="outlined"
+                style={{
+                  background: "linear-gradient(to bottom, #071520, #194D78)",
+                  boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
+                  color: "white",
+                }}
+                className={classes.button}
+                onClick={openModal}
+              >
                 Cancelar Transacción
               </Button>
             </>
           )}
+          </div>
         </CardWrap>
       </div>
       <ModalTransactionCanceled
