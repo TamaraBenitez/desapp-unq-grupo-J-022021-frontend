@@ -94,8 +94,15 @@ const ModalConfirmCancel = ({ isOpen, handleCancelTransaction,handleCancel }) =>
             >
                 <h3 className={classes.save}>Do you want save the changes?</h3>
             </Grid>
-                  <Button onClick={handleCancelTransaction}>yes,cancel</Button>
-                  <Button onClick={handleCancel}>continue in the transaction</Button> 
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+                  <Button style={{marginRight:"10px"}} onClick={handleCancelTransaction}>yes,cancel</Button>
+                  <Button onClick={handleCancel}>continue transaction</Button> 
+          </Grid>
           </div>
         </Fade>
       </Modal>

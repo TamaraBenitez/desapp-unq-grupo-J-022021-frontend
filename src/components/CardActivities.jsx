@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import { useParams,useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import { FormattedNumber } from "react-intl";
+import { API_Transaction } from "../services/APITransaction";
+import toast from "react-hot-toast";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -41,9 +43,27 @@ const CardActivities = ({activityId,hour,userId,criptoName,valueCripto,nominals,
         ALICE: "https://s2.coinmarketcap.com/static/img/coins/32x32/8766.png",
     }
 
+
+    
+    const checkTransactionInProgress=(userId,activityId)=>{
+        API_Transaction.checkTransactionInProgress(userId).then(res => {
+            if(res.data.active){
+                toast.error("this user is in transaction , try again later")
+            }else{
+                history.push(`/transactions/negociate/${userId}/activity/${activityId}`)
+            }
+        })
+    }
+
     const handleStartTransaction = () =>{
 
-        history.push(`/transactions/negociate/${userId}/activity/${activityId}`)
+        API_Transaction.checkInitTransaction().then(res => {
+            if(res.data.active){
+               toast.error("you have 1 active transaction")
+            }else{
+            checkTransactionInProgress(userId, activityId)
+            }
+        })
     }
 
     return (

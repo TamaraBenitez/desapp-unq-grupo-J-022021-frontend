@@ -26,6 +26,10 @@ class APITransaction {
         return ret;
     }
 
+    checkTransactionInProgress(idUser) {
+        return this.httpClient.get(`/api/transaction/progress/${idUser}`)
+    }
+
     cancelTransaction() {
 
         const ret = this.httpClient.put(`/api/transaction/cancel`);

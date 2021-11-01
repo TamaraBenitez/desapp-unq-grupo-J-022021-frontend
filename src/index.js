@@ -10,7 +10,7 @@ import translationsES from "./locales/es/translation.json"
 import i18n from './i18n';
 
 const IntlTraslateProvider =({children})=>{
-const [lang,setLang]=useState('en');
+const [lang,setLang]=useState(i18n.language);
 const traslates={'es':translationsES , 'en':translationsEN}
 
 i18n.on('languageChanged', (lng) => {

@@ -81,6 +81,8 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
   const [valueAmount, setValueAmount] = React.useState(0);
   const [quotation, setQuotation] = React.useState(0);
   const [nominals, setNominals] = React.useState(0);
+  const [editing, setEditing] = React.useState(false);
+  const intl = useIntl();
 
   useEffect(() => {
     quotationPrice(cripto);
@@ -104,10 +106,25 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
       amountInArs: valueAmount,
       activityType: type,
     };
-    API_Activities.createActivity(body).then((response) => {
-      toast.success("activity created successfully");
-      handleCancel();
-    });
+    toast.promise(
+      API_Activities.createActivity(body),
+      {
+        loading: `Creating activity`,
+        success: `Activity created successfully`,
+        error: `An error occurred at create activity`,
+      },
+      {
+        style: {
+          backgroundColor: "black",
+          color: "white",
+        },
+      }
+    );
+    handleCancel();
+  };
+
+  const toggleEditting = () => {
+    setEditing(!editing);
   };
 
   return (
@@ -136,15 +153,32 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
             </Grid>
 
             <label style={{ color: "white" }}>Amount in ARS</label>
-            <Input
-              defaultValue={``}
-              type="number"
-              placeholder={"Amount"}
-              value={valueAmount}
-              disableUnderline
-              onChange={handleChangeAmount}
-              className={classes.styleInput}
-            />
+            {editing ? (
+              <>
+                <Input
+                  defaultValue={``}
+                  type="number"
+                  placeholder={"Amount"}
+                  value={valueAmount}
+                  disableUnderline
+                  onChange={handleChangeAmount}
+                  className={classes.styleInput}
+                  onBlur={toggleEditting}
+                />
+              </>
+            ) : (
+              <>
+                <Input
+                  defaultValue={"ARS"}
+                  type="text"
+                  placeholder={"Amount"}
+                  value={intl.formatNumber(valueAmount,{style:"currency" ,currency:"ARS"})}
+                  disableUnderline
+                  onFocus={toggleEditting}
+                  className={classes.styleInput}
+                />
+              </>
+            )}
 
             <label style={{ color: "white" }}>Nominals</label>
             <Input
