@@ -16,6 +16,9 @@ import { InputAdornment, IconButton} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useModalTransaction } from '../components/modalStartTransactionProvider/hooks';
+import Alert from '@mui/material/Alert';
+import { Collapse } from '@mui/material';
+import Typography from "@mui/material/Typography";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +46,9 @@ const Login = () => {
     });
     const [isShowPassword, setIsShowPassword] = useState(false);
     const {block,unblock} =useModalTransaction()
+    const [error, setError] = useState(false);
+    const [open, setOpen] = useState(true);
+    const [seeError,setSeeError] =useState("")
 
 
     useEffect(() => {block()// eslint-disable-next-line
@@ -64,7 +70,10 @@ const Login = () => {
         })
 
 
-        .catch(error=> {console.log(error.response.data.error_msg)})
+        .catch(error=> {console.log(error.response.data.error_msg)
+            setSeeError(error.response.data.error_msg)
+        	setOpen(true);
+				setError(true);})
     }
 
     const handleInputChange = (event) => {
@@ -186,6 +195,21 @@ const Login = () => {
 
                                 <Button type="submit" variant="outlined" style={{ background: 'linear-gradient(to bottom, #071520, #194D78)', boxShadow: ' 4px 4px 4px 4px rgba(0, 0, 0, 0.4)', color: "white", marginTop: "20px", marginBottom: "20px" }} >Log in</Button>
                                 <Link to="/register" style={{ color: "white" }} >{t("notAccount")}</Link>
+
+                                {error && (
+									
+										<Alert 
+											variant="outlined" 
+											severity="error" 
+											
+											style={{padding:'0px', height:'20x',marginTop:"20px",marginBottom:"20px",width:"20x"}}
+										> 
+											<Typography>
+												{seeError}
+											</Typography>
+										</Alert>											
+									
+								)}
                             </Grid>
                             </form>
                         </Paper>
