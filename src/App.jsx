@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider} from '@mui/material/styles';
 import ModalTransactionProvider from './components/modalStartTransactionProvider';
 import PrivateRoute from './components/routeTypes/PrivateRoute'
 import PublicRoute from './components/routeTypes/PublicRoute'
+import Activities from './pages/Activities';
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
               <PublicRoute path="/login" component={Login} />
               <PrivateRoute path="/quotations" component={Quotation} />
               <PrivateRoute path="/transactions/negociate/:userId/activity/:activityId" component={Transaction}/>
+              <PrivateRoute path="/activities/:type/cripto/:cripto" component={Activities}/>
               <Redirect from="/" to="/login" />
           </Switch>
           </ModalTransactionProvider>

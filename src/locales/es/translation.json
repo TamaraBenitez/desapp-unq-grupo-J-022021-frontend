@@ -11,7 +11,10 @@
     "cvu":"CVU" ,
     "addressWallet": "Direccion de billetera" ,
     "existAccount": "Ya tienes una cuenta? Inicia sesion" , 
-    "notAccount" : "Todavia no tienes una cuenta? Crea una nueva"
+    "notAccount" : "Todavia no tienes una cuenta? Crea una nueva",
+    "activities": "Actividades",
+    "hour": "Hora"
+
 
 
 }

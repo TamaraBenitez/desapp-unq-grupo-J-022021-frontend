@@ -12,7 +12,18 @@
     "addressWallet": "Address wallet" ,
     "existAccount": "Do you already have an account? Log in" , 
     "notAccount" : "You do not have an account? Create a new",
-    "welcomeUser" : "Welcome tamara"
+    "activities": "Activities",
+    "hour": "Hour",
+    "valueCripto" : "Quotation" ,
+    "nominal":"Nominal amount",
+    "amountArs": "Amount of the operation in ARG pesos",
+    "user": "User",
+    "operations": "Operations",
+    "operationsNull": "No operations",
+    "reputation": "Reputation",
+    "startTransaction": "Start transaction" ,
+    "addActivity": "Add new activity"
+
 
 
 

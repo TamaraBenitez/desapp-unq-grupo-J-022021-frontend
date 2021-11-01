@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import ListItem from "@mui/material/ListItem";
 import {FormattedNumber} from 'react-intl'
+import { useHistory } from "react-router";
 
 
 const useStyles = makeStyles(theme=>({
@@ -48,12 +49,19 @@ const useStyles = makeStyles(theme=>({
   },
 }));
 
-const CardQuotations = ({ symbol, hour, price }) => {
+const CardQuotations = ({ symbol, hour, price }) => {  
   const classes = useStyles();
+  const history = useHistory();
 
   const handleBuy = () => {
-    console.log(symbol.slice(0, -4));
+    history.push(`activities/buy/cripto/${symbol}`)
+  
   };
+
+  const handleSell = () => {
+
+    history.push(`activities/sell/cripto/${symbol}`)
+  }
   
   const asoc ={
     BTC:"https://s2.coinmarketcap.com/static/img/coins/32x32/1.png",
@@ -120,6 +128,7 @@ const CardQuotations = ({ symbol, hour, price }) => {
                   marginLeft: "10px",
                   width: "100px",
                 }}
+                onClick={handleSell}
               >
                 Vender
               </Button>
