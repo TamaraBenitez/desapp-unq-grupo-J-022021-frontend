@@ -7,6 +7,7 @@ import { API_Activities } from "../services/APIActivities";
 import "../styles/welcome.css";
 import { useTranslation } from "react-i18next";
 import CardWrap from "../components/CardWrap";
+import ModalCreateActivity from "../components/ModalCreateActivity";
 import AddIcon from '@mui/icons-material/Add';
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -17,6 +18,7 @@ const Activities = () => {
     const { type } = useParams();
     const { cripto } = useParams();
     const { t } = useTranslation();
+    const [open,setOpen]= useState(false);
 
     useEffect(() => {
 
@@ -26,16 +28,21 @@ const Activities = () => {
     }, []);
 
     const getActivities = () => {
-
-        console.log(type)
-        console.log(cripto)
-
         API_Activities.getActivitiesByCriptoandType(type, cripto).then((response) => {
 
             setActivities(response.data)
         });
     }
 
+    
+    const handleOpen  = () => {
+        setOpen(true);
+    }      
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
     return (
 
         <Container disableGutters maxWidth={false} className="conteiner-color">
@@ -55,7 +62,7 @@ const Activities = () => {
                 justifyContent="flex-start"
                 alignItems="flex-start"
                 sx={{marginBottom:"20px",marginLeft: "20px"}}
-            > <Button sx={{color:"grey !important",backgroundColor:"black",border:'1px solid grey'}}><AddIcon/> {t("addActivity")}</Button></Grid> 
+            > <Button sx={{color:"grey !important",backgroundColor:"black",border:'1px solid grey'}} onClick={handleOpen}><AddIcon/> {t("addActivity")}</Button></Grid> 
             <CardWrap
             style={{
             backgroundColor: "black",
@@ -79,8 +86,7 @@ const Activities = () => {
 
 
             </CardWrap> </div>
-
-
+            <ModalCreateActivity isOpen={open} handleCancel={handleClose}/>
         </Container>
 
     )

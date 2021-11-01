@@ -17,6 +17,10 @@ class APIListQuotation {
 
         return ret;
     }
+
+    getQuotationBySymbol(symbol){
+        return this.httpClient.get(`/api/cotization/${symbol+"USDT"}`)
+    }
 }
 
 const API_Quotations = new APIListQuotation();

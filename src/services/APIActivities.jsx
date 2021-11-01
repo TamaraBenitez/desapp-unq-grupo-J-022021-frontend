@@ -10,6 +10,10 @@ class APIActivities {
        
     }
 
+    createActivity(responseBody){
+        return this.httpClient.post('/api/activity/create',responseBody)
+    }
+
     getActivitiesByCriptoandType(type,cripto){
 
         const ret = this.httpClient.get(`/api/activity/${type}/cripto/${cripto}`)

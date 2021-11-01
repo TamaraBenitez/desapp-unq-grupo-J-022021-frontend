@@ -7,6 +7,7 @@ import BTC from '../images/BTC.png';
 import Button from "@mui/material/Button";
 import { useParams,useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
+import { FormattedNumber } from "react-intl";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -67,16 +68,16 @@ const CardActivities = ({activityId,hour,userId,criptoName,valueCripto,nominals,
 
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={6}>
-                            <Item>{t("hour")} : {hour}</Item>
+                            <Item>{t("hour")} : {hour} hs</Item>
                         </Grid>
                         <Grid item xs={6}>
-                            <Item>{t("valueCripto")} : {valueCripto}</Item>
+                            <Item>{t("valueCripto")} : <FormattedNumber value={valueCripto} style="currency" currency="ARS"/></Item>
                         </Grid>
                         <Grid item xs={6}>
                             <Item>{t("nominal")} : {nominals}</Item>
                         </Grid>
                         <Grid item xs={6}>
-                            <Item>{t("amountArs")} : {ars}</Item>
+                            <Item>{t("amountArs")} : <FormattedNumber value={ars} style="currency" currency="ARS"/></Item>
                         </Grid>
 
                         <Grid item xs={6}>
