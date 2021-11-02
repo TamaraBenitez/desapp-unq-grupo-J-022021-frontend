@@ -6,6 +6,7 @@ import { makeStyles } from "@mui/styles";
 import ListItem from "@mui/material/ListItem";
 import {FormattedNumber} from 'react-intl'
 import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
 
 
 const useStyles = makeStyles(theme=>({
@@ -52,6 +53,7 @@ const useStyles = makeStyles(theme=>({
 const CardQuotations = ({ symbol, hour, price }) => {  
   const classes = useStyles();
   const history = useHistory();
+  const { t } = useTranslation();
 
   const handleBuy = () => {
     history.push(`activities/buy/cripto/${symbol}`)
@@ -119,7 +121,7 @@ const CardQuotations = ({ symbol, hour, price }) => {
                 }}
                 onClick={handleBuy}
               >
-                Comprar
+                {t("buy")}
               </Button>
               <Button
                 sx={{
@@ -130,7 +132,7 @@ const CardQuotations = ({ symbol, hour, price }) => {
                 }}
                 onClick={handleSell}
               >
-                Vender
+               {t("sell")}
               </Button>
             </Grid>
           </Grid>

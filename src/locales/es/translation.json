@@ -13,7 +13,12 @@
     "existAccount": "Ya tienes una cuenta? Inicia sesion" , 
     "notAccount" : "Todavia no tienes una cuenta? Crea una nueva",
     "activities": "Actividades",
-    "hour": "Hora"
+    "hour": "Hora",
+    "selectLanguage": "Seleccionar lenguaje",
+    "cotizations": "Cotizaciones",
+    "buy":"Comprar",
+    "sell":"Vender",
+    "lastUpdate": "Ultima actualizacion"
 
 
 

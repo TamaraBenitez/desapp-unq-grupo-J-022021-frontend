@@ -19,6 +19,7 @@ import { useModalTransaction } from '../components/modalStartTransactionProvider
 import Alert from '@mui/material/Alert';
 import { Collapse } from '@mui/material';
 import Typography from "@mui/material/Typography";
+import SelectorLanguage from '../components/SelectorLanguage';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +66,7 @@ const Login = () => {
         .then((response)=> {
                 unblock()
                 localStorage.setItem("token",response.data.accessToken)
+                
                 history.push("/quotations");
                 
         })
@@ -91,16 +93,29 @@ const Login = () => {
                     backgroundColor: "transparent",
                 }}
             >
+                 <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center" wrap="nowrap"
+                >
+
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="center"
+                > <div style={{marginTop:"45px",marginLeft:"10px"}}><SelectorLanguage/></div></Grid>
                 <Grid
                     container
                     direction="row"
                     justifyContent="flex-end"
                     alignItems="center"
-                >
+                > 
 
 
                     <img src={Logo} className="logoRegister" alt="logo" />
-                </Grid>
+                </Grid> </Grid>
                 <Grid
                     container
                     direction="row"
@@ -193,7 +208,7 @@ const Login = () => {
                                     }}
                                 />
 
-                                <Button type="submit" variant="outlined" style={{ background: 'linear-gradient(to bottom, #071520, #194D78)', boxShadow: ' 4px 4px 4px 4px rgba(0, 0, 0, 0.4)', color: "white", marginTop: "20px", marginBottom: "20px" }} >Log in</Button>
+                                <Button type="submit" variant="outlined" style={{ background: 'linear-gradient(to bottom, #071520, #194D78)', boxShadow: ' 4px 4px 4px 4px rgba(0, 0, 0, 0.4)', color: "white", marginTop: "20px", marginBottom: "20px" }} >{t("loginButton")}</Button>
                                 <Link to="/register" style={{ color: "white" }} >{t("notAccount")}</Link>
 
                                 {error && (

@@ -29,7 +29,7 @@ const Quotation = () => {
       <Navbar />
 
       <div className="container-welcome">
-        <span className="welcome"> {t("Cotizations")} </span>
+        <span className="welcome"> {t("cotizations")} </span>
       </div>
 
       <div style={{ marginTop: "100px" }}>

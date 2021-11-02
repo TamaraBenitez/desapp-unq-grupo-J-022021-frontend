@@ -22,7 +22,12 @@
     "operationsNull": "No operations",
     "reputation": "Reputation",
     "startTransaction": "Start transaction" ,
-    "addActivity": "Add new activity"
+    "addActivity": "Add new activity",
+    "selectLanguage": "Select language",
+    "cotizations": "Cotizations",
+    "buy":"Buy",
+    "sell":"Sell",
+    "lastUpdate": "Last update"
 
 
 

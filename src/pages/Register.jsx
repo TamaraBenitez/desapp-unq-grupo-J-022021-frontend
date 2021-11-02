@@ -18,7 +18,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useModalTransaction } from '../components/modalStartTransactionProvider/hooks';
 import Alert from '@mui/material/Alert';
 import Typography from "@mui/material/Typography";
-
+import SelectorLanguage from '../components/SelectorLanguage';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -71,6 +71,7 @@ const Register = () => {
         .then((response)=> {
             unblock()
             localStorage.setItem("token",response.data.accessToken)
+            
             history.push("/quotations");
             
         })
@@ -96,6 +97,19 @@ const Register = () => {
                     backgroundColor: "transparent",
                 }}
             >
+                 <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center" wrap="nowrap"
+                >
+
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="center"
+                > <div style={{marginTop:"45px",marginLeft:"10px"}}><SelectorLanguage/></div></Grid>
                 <Grid
                     container
                     direction="row"
@@ -105,7 +119,7 @@ const Register = () => {
 
 
                     <img src={Logo} className="logoRegister" alt="logo" />
-                </Grid>
+                </Grid> </Grid>
                 <Grid
                     container
                     direction="row"
