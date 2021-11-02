@@ -96,7 +96,7 @@ const ModalTransactionCompleted = ({ isOpen, handleBack }) => {
               alignItems="center"
             >
               <h3 className={classes.save}>
-                Transaction was completed successfully
+               {t("transactionSuccessfully")}
               </h3>
             </Grid>
             <Grid
@@ -105,7 +105,7 @@ const ModalTransactionCompleted = ({ isOpen, handleBack }) => {
               justify="center"
               alignItems="center"
             >
-              <Button onClick={handleBack}>back to quotations </Button>
+              <Button onClick={handleBack}>{t("backQuotations")} </Button>
             </Grid>
           </div>
         </Fade>

@@ -91,7 +91,7 @@ const ModalTransactionCanceled = ({ isOpen, handleBack , userCancelledName}) => 
               justify="flex-start"
               alignItems="flex-start"
             >
-                <h3 className={classes.save}>{userCancelledName} has been cancelled the transaction</h3>
+                <h3 className={classes.save}>{userCancelledName} {t("cancelledT")}</h3>
             </Grid>
             <Grid
                   container
@@ -99,7 +99,7 @@ const ModalTransactionCanceled = ({ isOpen, handleBack , userCancelledName}) => 
                   justify="center"
                   alignItems="center"
                 >
-                  <Button onClick={handleBack}>back to quotations</Button>
+                  <Button onClick={handleBack}>{t("backQuotations")}</Button>
                </Grid>
           </div>
         </Fade>

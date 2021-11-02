@@ -109,9 +109,9 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
     toast.promise(
       API_Activities.createActivity(body),
       {
-        loading: `Creating activity`,
-        success: `Activity created successfully`,
-        error: `An error occurred at create activity`,
+        loading: t("creatingActivity"),
+        success: t("successfullyActivity"),
+        error: t("errorCreateActivity"),
       },
       {
         style: {
@@ -149,10 +149,10 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
               justify="flex-start"
               alignItems="flex-start"
             >
-              <h3 className={classes.save}>Create new Activity</h3>
+              <h3 className={classes.save}>{t("createNewActivity")}</h3>
             </Grid>
 
-            <label style={{ color: "white" }}>Amount in ARS</label>
+            <label style={{ color: "white" }}>{t("amountArs")}</label>
             {editing ? (
               <>
                 <Input
@@ -180,7 +180,7 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
               </>
             )}
 
-            <label style={{ color: "white" }}>Nominals</label>
+            <label style={{ color: "white" }}>{t("nominal")}</label>
             <Input
               defaultValue={0}
               type="number"
@@ -190,7 +190,7 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
               onChange={(e) => setNominals(e.target.value)}
             />
 
-            <label style={{ color: "white" }}>Actual Quotation</label>
+            <label style={{ color: "white" }}>{t("actualQuotation")}</label>
             <Input
               type="currency"
               defaultValue={quotation}
@@ -203,14 +203,14 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
               readOnly={true}
             />
 
-            <label style={{ color: "white" }}>Operation type</label>
+            <label style={{ color: "white" }}>{t("operationType")}</label>
             <Input
               defaultValue={`${type}`}
               disableUnderline
               className={classes.styleInput}
               readOnly={true}
             />
-            <label style={{ color: "white" }}>Ticker</label>
+            <label style={{ color: "white" }}>{t("ticket")}</label>
             <Input
               defaultValue={`${cripto}`}
               disableUnderline
@@ -224,9 +224,9 @@ const ModalCreateActivity = ({ isOpen, handleCancel }) => {
               alignItems="center"
             >
               <Button onClick={handleCreate} style={{ marginRight: "20px" }}>
-                Create
+               {t("createA")}
               </Button>
-              <Button onClick={handleCancel}>Cancel</Button>
+              <Button onClick={handleCancel}>{t("cancel")}</Button>
             </Grid>
           </div>
         </Fade>

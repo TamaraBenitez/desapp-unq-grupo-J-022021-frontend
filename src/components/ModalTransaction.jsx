@@ -127,7 +127,7 @@ const ModalTransaction = ({ isOpen,setOpen,blockExec }) => {
             >
               {(loading && (
                 <h3 className={classes.save}>Check for users</h3>
-              )) || <h3 className={classes.save}>1 User found to negociate</h3>}
+              )) || <h3 className={classes.save}>{t("foundUserT")}</h3>}
             </Grid>
             {!loading && (
               <>
@@ -137,7 +137,7 @@ const ModalTransaction = ({ isOpen,setOpen,blockExec }) => {
                   justify="center"
                   alignItems="center"
                 >
-                  <Button onClick={startTransaction}>Start Transaction</Button>
+                  <Button onClick={startTransaction}>{t("startTransaction")}</Button>
                 </Grid>
               </>
             )}

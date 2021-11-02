@@ -92,7 +92,7 @@ const ModalConfirmCancel = ({ isOpen, handleCancelTransaction,handleCancel }) =>
               justify="flex-start"
               alignItems="flex-start"
             >
-                <h3 className={classes.save}>Do you want cancel the transaction?</h3>
+                <h3 className={classes.save}>{t("wantCancelT")}</h3>
             </Grid>
             <Grid
               container
@@ -100,8 +100,8 @@ const ModalConfirmCancel = ({ isOpen, handleCancelTransaction,handleCancel }) =>
               justifyContent="center"
               alignItems="center"
             >
-                  <Button style={{marginRight:"10px"}} onClick={handleCancelTransaction}>yes,cancel</Button>
-                  <Button onClick={handleCancel}>continue transaction</Button> 
+                  <Button style={{marginRight:"10px"}} onClick={handleCancelTransaction}>{t("yesCancel")}</Button>
+                  <Button onClick={handleCancel}>{t("continueT")}</Button> 
           </Grid>
           </div>
         </Fade>

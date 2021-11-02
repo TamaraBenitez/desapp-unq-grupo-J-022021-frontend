@@ -97,7 +97,7 @@ const ModalSendAmountNotify = ({ isOpen, handleBack, userCancelledName }) => {
               alignItems="center"
             >
               <div className={classes.save}>
-                {userCancelledName} send amount, check bank account
+                {userCancelledName} {t("checkSendAmount")}
               </div>
             </Grid>
             <Grid
@@ -106,7 +106,7 @@ const ModalSendAmountNotify = ({ isOpen, handleBack, userCancelledName }) => {
               justify="center"
               alignItems="center"
             >
-              <Button onClick={handleBack}>continue transaction</Button>
+              <Button onClick={handleBack}>{t("continueT")}</Button>
             </Grid>
           </div>
         </Fade>

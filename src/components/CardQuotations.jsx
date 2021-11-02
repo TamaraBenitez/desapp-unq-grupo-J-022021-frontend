@@ -152,7 +152,7 @@ const CardQuotations = ({ symbol, hour, price }) => {
               }}
               component="div"
             >
-              Last Update: {hour} hs
+              {t("lastUpdate")} : {hour} hs
             </Typography>
           </Grid>
         </Grid>

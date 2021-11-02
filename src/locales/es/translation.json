@@ -19,6 +19,14 @@
     "buy":"Comprar",
     "sell":"Vender",
     "lastUpdate": "Ultima actualizacion",
+    "startTransaction": "Comenzar transaccion",
+    "addActivity": "Agregar nueva actividad",
+    "nominal":"Nominales",
+    "user": "Usuario",
+    "reputation": "Reputacion",
+    "valueCripto" : "Cotizacion",
+    "amountArs": "Monto de la operacion",
+    "operations": "Operaciones",
 
     "notifySend":"Se ha notificado el envío del importe a la cuenta de destino",
     "canceledTransaction":"La transaccion fue cancelada",
@@ -28,7 +36,25 @@
     "notify":"Notificar envio",
     "addrW":"Direccion de billetera",
     "releaseCripto":"Liberar criptoactivo",
-    "cancelT":"CancelarTransacción"
+    "cancelT":"CancelarTransacción" ,
+    "wantCancelT": "¿Quieres cancelar la transacción?",
+    "yesCancel":"Si,cancelar",
+    "continueT":"Continuar transaccion",
+    "creatingActivity": "Creando actividad",
+    "successfullyActivity": "Actividad creada con exito",
+    "errorCreateActivity":"Ha ocurrido un error al crear una actividad",
+    "createNewActivity":"Crear nueva actividad",
+    "actualQuotation": "Actual cotizacion",
+    "operationType":"Tipo de operacion",
+    "ticker":"Ticker",
+    "createA":"Crear",
+    "cancel":"Cancelar",
+    "checkSendAmount":"Dinero enviado, chequea tu cuenta bancaria",
+    "foundUserT": "Usuario encontrado para transaccionar",
+    "cancelledT":"Ha cancelado la transaccion",
+    "backQuotations": "Volver a cotizaciones",
+    "transactionSuccessfully" :"La transaccion fue exitosa"
+
 
 
 
