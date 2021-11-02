@@ -63,14 +63,14 @@ createStyles({
 
   const SelectorLanguage = () => {
     const classes = useStyles();
-    const [age, setAge] = React.useState(localStorage.getItem("es"));
+    const [age, setAge] = React.useState(localStorage.getItem("languaje"));
     const {t, i18n} = useTranslation()
 
 useEffect(()=>{i18n.changeLanguage(age)},[age])
 
     const handleChange = (event) => {
         setAge(event.target.value);
-        localStorage.setItem("idioma",event.target.value)
+        localStorage.setItem("languaje",event.target.value)
         i18n.changeLanguage(event.target.value)
 
       };

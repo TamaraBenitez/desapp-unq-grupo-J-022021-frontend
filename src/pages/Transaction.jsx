@@ -15,6 +15,7 @@ import toast from "react-hot-toast";
 import { FormattedNumber } from "react-intl";
 import ModalConfirmCancel from "../components/ModalConfirmCancel";
 import { CircularProgress, Grid } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const dayjs = require("dayjs");
 
 const useStyles = makeStyles((theme) => ({
@@ -55,9 +56,11 @@ const Transaction = () => {
   const { block, unblock } = useModalTransaction();
   const [open, setOpen] = useState(false);
   const [notified, setNotified] = useState(false);
+  const {t,i18n}=useTranslation()
 
   useEffect(() => {
     block();
+    i18n.changeLanguage(localStorage.getItem("languaje"));
     getDataUserTransationToTransfer();
     userConnectedTransaction();
     return () => unblock();

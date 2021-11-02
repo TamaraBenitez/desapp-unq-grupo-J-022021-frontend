@@ -11,9 +11,10 @@ const dayjs = require("dayjs");
 
 const Quotation = () => {
   const [listQuotation, setListQuotation] = React.useState([]);
-  const { t } = useTranslation();
+  const { t ,i18n } = useTranslation();
 
   useEffect(() => {
+    i18n.changeLanguage(localStorage.getItem("languaje"))
     getQuotations();
     // eslint-disable-next-line
   }, []);

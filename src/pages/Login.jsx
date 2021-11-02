@@ -61,12 +61,13 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        let languaje=localStorage.getItem("languaje")
         localStorage.clear();
         API_Login.postLogin(data)
         .then((response)=> {
                 unblock()
                 localStorage.setItem("token",response.data.accessToken)
-                
+                localStorage.setItem("languaje",languaje)
                 history.push("/quotations");
                 
         })

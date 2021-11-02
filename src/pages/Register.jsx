@@ -65,13 +65,14 @@ const Register = () => {
 	};
 
     const handleSubmit = (event) => {
-        localStorage.clear()
         event.preventDefault();
+        let languaje=localStorage.getItem("languaje")
+        localStorage.clear()
         API_Register.postRegister(data)
         .then((response)=> {
             unblock()
             localStorage.setItem("token",response.data.accessToken)
-            
+            localStorage.setItem("languaje",languaje)
             history.push("/quotations");
             
         })

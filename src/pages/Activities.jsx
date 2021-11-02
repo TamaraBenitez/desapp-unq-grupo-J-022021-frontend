@@ -17,11 +17,11 @@ const Activities = () => {
     const [activities, setActivities] = useState([]);
     const { type } = useParams();
     const { cripto } = useParams();
-    const { t } = useTranslation();
+    const { t , i18n } = useTranslation();
     const [open,setOpen]= useState(false);
 
     useEffect(() => {
-
+        i18n.changeLanguage(localStorage.getItem('languaje'));
         getActivities();
         // eslint-disable-next-line
 
