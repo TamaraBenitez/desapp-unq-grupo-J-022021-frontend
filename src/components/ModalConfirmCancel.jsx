@@ -92,7 +92,7 @@ const ModalConfirmCancel = ({ isOpen, handleCancelTransaction,handleCancel }) =>
               justify="flex-start"
               alignItems="flex-start"
             >
-                <h3 className={classes.save}>Do you want save the changes?</h3>
+                <h3 className={classes.save}>Do you want cancel the transaction?</h3>
             </Grid>
             <Grid
               container

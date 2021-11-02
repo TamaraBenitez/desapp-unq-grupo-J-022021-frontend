@@ -27,9 +27,15 @@
     "cotizations": "Cotizations",
     "buy":"Buy",
     "sell":"Sell",
-    "lastUpdate": "Last update"
-
-
-
-
+    "lastUpdate": "Last update",
+ 
+    "notifySend":"The sending of the amount to the destination account has been notified",
+    "canceledTransaction":"Transaction was canceled",
+    "waitUser":"Waiting for user",
+    "amountNegociate":"Amount to negotiate",
+    "nameAndLastName":"Name and lastname",
+    "notify":"Notificar envio", 
+    "addrW":"Address wallet",
+    "releaseCripto":"Release cryptocurrency",
+    "cancelT":"Cancel Transaction"
 }

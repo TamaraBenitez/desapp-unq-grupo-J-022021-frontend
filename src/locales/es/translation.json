@@ -18,7 +18,17 @@
     "cotizations": "Cotizaciones",
     "buy":"Comprar",
     "sell":"Vender",
-    "lastUpdate": "Ultima actualizacion"
+    "lastUpdate": "Ultima actualizacion",
+
+    "notifySend":"Se ha notificado el envío del importe a la cuenta de destino",
+    "canceledTransaction":"La transaccion fue cancelada",
+    "waitUser":"Esperando al usuario",
+    "amountNegociate":"Monto acordado",
+    "nameAndLastName":"Nombre y apellido",
+    "notify":"Notificar envio",
+    "addrW":"Direccion de billetera",
+    "releaseCripto":"Liberar criptoactivo",
+    "cancelT":"CancelarTransacción"
 
 
 

@@ -76,7 +76,6 @@ const Transaction = () => {
         userConnectedTransaction();
       }
       if (!sended || !completeSend) {
-        console.log("exec");
         checkCompleteSend();
       }
     }, 5000);
@@ -118,15 +117,13 @@ const Transaction = () => {
       .then((response) => {
         sendAmount();
         setNotified(true);
-        toast.success(
-          "Se ha notificado el envio del monto a la cuenta de destino"
-        );
+        toast.success(t("notifySend"));
       })
       .catch((error) => setModalCancelOpen(true));
   };
 
   const handleCancelTransaction = () => {
-    toast.error("Transaction was canceled");
+    toast.error(t("canceledTransaction"));
     API_Transaction.cancelTransaction();
     history.push("/quotations");
   };
@@ -173,7 +170,7 @@ const Transaction = () => {
               >
                 <CircularProgress />
                 <label style={{ color: "grey", marginTop: 10 }}>
-                  waiting for user
+                  {t("waitUser")}
                 </label>
               </Grid>
             </>
@@ -182,16 +179,16 @@ const Transaction = () => {
           {activeTransaction && transactionData !== undefined && (
             <>
               <Typography className={classes.typographyStyle} component="div">
-                Hora: {dayjs(transactionData.hour).format("HH:mm")} hs
+                {t("hour")}: {dayjs(transactionData.hour).format("HH:mm")} hs
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Criptoactivo:{transactionData.criptoName}
+                {t("criptoName")}:{transactionData.criptoName}
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Cantidad de criptoactivo: {transactionData.nominals}
+                {t("nominal")}: {transactionData.nominals}
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Cotizacion:{" "}
+                {t("valueCripto")}:{" "}
                 <FormattedNumber
                   value={transactionData.cotization}
                   style={"currency"}
@@ -199,7 +196,7 @@ const Transaction = () => {
                 />
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Monto a negociar:{" "}
+                {t("amountNegociate")}:{" "}
                 <FormattedNumber
                   value={transactionData.amountInArs}
                   style={"currency"}
@@ -207,15 +204,15 @@ const Transaction = () => {
                 />
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Nombre y apellido : {transactionData.username}{" "}
+                {t("nameAndLastName")}: {transactionData.username}{" "}
                 {transactionData.lastName}
               </Typography>
               <Typography className={classes.typographyStyle} component="div">
-                Operaciones realizadas : {transactionData.operations}
+                {t("operations")}: {transactionData.operations}
               </Typography>
 
               <Typography className={classes.typographyStyle} component="div">
-                Reputación : {transactionData.reputation}
+                {t("reputation")}: {transactionData.reputation}
               </Typography>
 
               {(isBuy() && (
@@ -241,7 +238,7 @@ const Transaction = () => {
                     onClick={handleClickSendAmount}
                     disabled={notified}
                   >
-                    Notificar envio
+                    {t("notify")}
                   </Button>
                 </>
               )) || (
@@ -250,7 +247,7 @@ const Transaction = () => {
                     className={classes.typographyStyle}
                     component="div"
                   >
-                    Direccion de billetera : {transactionData.addrOrCvu}
+                    {t("addrW")}: {transactionData.addrOrCvu}
                   </Typography>
                   <Button
                     variant="outlined"
@@ -266,7 +263,7 @@ const Transaction = () => {
                     onClick={handleCompleteAndSendCripto}
                     disabled={!completeSend}
                   >
-                    Liberar Criptoactivo
+                    {t("releaseCripto")}
                   </Button>
                 </>
               )}
@@ -283,7 +280,7 @@ const Transaction = () => {
                 className={classes.button}
                 onClick={openModal}
               >
-                Cancelar Transacción
+                {t("cancelT")}
               </Button>
             </>
           )}
