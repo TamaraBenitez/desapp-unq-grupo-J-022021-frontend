@@ -24,7 +24,7 @@ const httpClient = axios.create({
               
           if (error.response !==undefined && error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            localStorage.clear() 
+            localStorage.removeItem("token") 
             window.location.reload();    
            return httpClient(originalRequest);
           }

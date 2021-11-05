@@ -17,7 +17,6 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useModalTransaction } from '../components/modalStartTransactionProvider/hooks';
 import Alert from '@mui/material/Alert';
-import { Collapse } from '@mui/material';
 import Typography from "@mui/material/Typography";
 import SelectorLanguage from '../components/SelectorLanguage';
 
@@ -61,22 +60,21 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        let languaje=localStorage.getItem("languaje")
-        localStorage.clear();
+        localStorage.removeItem("token");
         API_Login.postLogin(data)
         .then((response)=> {
                 unblock()
                 localStorage.setItem("token",response.data.accessToken)
-                localStorage.setItem("languaje",languaje)
                 history.push("/quotations");
                 
         })
 
 
-        .catch(error=> {console.log(error.response.data.error_msg)
+        .catch(error=> {
+            if(error.response.data!==undefined){
             setSeeError(error.response.data.error_msg)
         	setOpen(true);
-				setError(true);})
+				setError(true);}})
     }
 
     const handleInputChange = (event) => {
