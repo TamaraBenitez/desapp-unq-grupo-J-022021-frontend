@@ -4,8 +4,9 @@ import { useHistory } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from "react-i18next";
-import { MdExitToApp, MdLanguage } from "react-icons/md";
+import { MdExitToApp, MdLanguage , MdPeople } from "react-icons/md";
 import { createStyles, makeStyles } from "@mui/styles";
+import PeopleIcon from '@mui/icons-material/People';
 
 const userLogoutStyles = makeStyles((theme) =>
     createStyles({
@@ -80,6 +81,8 @@ const UserLogout = () => {
                 history.push("/login");
             };
 
+    const handleUsers = () => {}
+
     return (
         <>
             <IconButton
@@ -128,6 +131,17 @@ const UserLogout = () => {
                         {t("logout")}
                     </Typography>
                 </MenuItem>
+
+                <MenuItem className={classes.menuitem } onClick={handleUsers}>
+                    <ListItemIcon classes={{ root: classes.menuicon }}>
+
+                        <MdPeople size='22' color={"grey"}/>
+                    </ListItemIcon>
+                    <Typography variant='inherit' noWrap>
+                    {t("users")}
+                    </Typography>
+                </MenuItem>
+
             </Menu>
 
             <Menu
@@ -159,6 +173,9 @@ const UserLogout = () => {
                         {t("EN")}
                     </Typography>
                 </MenuItem>
+
+                
+
             </Menu>
         </>
     );

@@ -10,6 +10,7 @@ import ModalTransactionProvider from './components/modalStartTransactionProvider
 import PrivateRoute from './components/routeTypes/PrivateRoute'
 import PublicRoute from './components/routeTypes/PublicRoute'
 import Activities from './pages/Activities';
+import Users from './pages/Users';
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
               <PrivateRoute path="/quotations" component={Quotation} />
               <PrivateRoute path="/transactions/negociate/:userId/activity/:activityId" component={Transaction}/>
               <PrivateRoute path="/activities/:type/cripto/:cripto" component={Activities}/>
+              <PrivateRoute path="/users" component={Users} />
               <Redirect from="/" to="/login" />
           </Switch>
           </ModalTransactionProvider>

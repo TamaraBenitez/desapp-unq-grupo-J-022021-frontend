@@ -81,7 +81,7 @@ const CardQuotations = ({ symbol, hour, price }) => {
 
   return (
     <div>
-      <ListItem sx={{ backgroundColor: "black", border: "1px solid grey" }}>
+      <ListItem sx={{ backgroundColor: "black", border: "1px solid gray" }}>
         <Grid
           container
           direction="row"
@@ -115,8 +115,8 @@ const CardQuotations = ({ symbol, hour, price }) => {
             >
               <Button
                 sx={{
-                  color: "green",
-                  border: "1px solid green",
+                  color: "gray",
+                  border: "1px solid #2E6087",
                   width: "100px",
                 }}
                 onClick={handleBuy}
@@ -125,8 +125,8 @@ const CardQuotations = ({ symbol, hour, price }) => {
               </Button>
               <Button
                 sx={{
-                  color: "red",
-                  border: "1px solid red",
+                  color: "gray",
+                  border: "1px solid #2E6087",
                   marginLeft: "10px",
                   width: "100px",
                 }}

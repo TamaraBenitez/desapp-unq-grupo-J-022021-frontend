@@ -53,7 +53,9 @@
     "foundUserT": "Usuario encontrado para transaccionar",
     "cancelledT":"Ha cancelado la transaccion",
     "backQuotations": "Volver a cotizaciones",
-    "transactionSuccessfully" :"La transaccion fue exitosa"
+    "transactionSuccessfully" :"La transaccion fue exitosa" ,
+    "users": "Usuarios",
+    "logout" : "Salir"
 
 
 

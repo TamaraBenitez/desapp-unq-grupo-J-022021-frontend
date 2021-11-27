@@ -54,7 +54,9 @@
     "foundUserT": "User found to negociate",
     "cancelledT":"Has been cancelled the transaction",
     "backQuotations": "Back to quotations",
-    "transactionSuccessfully" :"Transaction was completed successfully"
+    "transactionSuccessfully" :"Transaction was completed successfully" , 
+    "users": "Users" , 
+    "logout" : "Logout"
     
    
 }
