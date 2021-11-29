@@ -55,8 +55,14 @@
     "backQuotations": "Volver a cotizaciones",
     "transactionSuccessfully" :"La transaccion fue exitosa" ,
     "users": "Usuarios",
-    "logout" : "Salir"
-
+    "logout" : "Salir",
+    "error":"Error al conectar con el servidor",
+    "name must contain between 10 and 30 characters":"El nombre debe contener entre 10 y 30 caracteres",
+    "lastName must contain between 10 and 30 characters":"El apellido debe contener entre 10 y 30 caracteres",
+    "format email is incorrect":"El formato del mail es incorrecto , debe ser por ejemplo: example@gmail.com",
+    "cvu must contain 22 characters":"El cvu debe contener 22 caracteres",
+    "Address Wallet must contain 8 characters":"La direccion de la billetera debe contener 8 caracteres",
+    "Error user with this data already exists":"El usuario con estos datos ya existe"
 
 
 

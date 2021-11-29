@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import CardWrap from "../components/CardWrap";
 import Navbar from "../components/NavBar";
 import Container from "@mui/material/Container";
@@ -56,7 +57,7 @@ const Transaction = () => {
   const { block, unblock } = useModalTransaction();
   const [open, setOpen] = useState(false);
   const [notified, setNotified] = useState(false);
-  const {t,i18n}=useTranslation()
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     block();
@@ -175,115 +176,115 @@ const Transaction = () => {
               </Grid>
             </>
           )}
-          <div style={{marginLeft:"30px",marginTop:30}}>
-          {activeTransaction && transactionData !== undefined && (
-            <>
-              <Typography className={classes.typographyStyle} component="div">
-                {t("hour")}: {dayjs(transactionData.hour).format("HH:mm")} hs
-              </Typography>
-              <Typography className={classes.typographyStyle} component="div">
-                {t("criptoName")}:{transactionData.criptoName}
-              </Typography>
-              <Typography className={classes.typographyStyle} component="div">
-                {t("nominal")}: {transactionData.nominals}
-              </Typography>
-              <Typography className={classes.typographyStyle} component="div">
-                {t("valueCripto")}:{" "}
-                <FormattedNumber
-                  value={transactionData.cotization}
-                  style={"currency"}
-                  currency="ARS"
-                />
-              </Typography>
-              <Typography className={classes.typographyStyle} component="div">
-                {t("amountNegociate")}:{" "}
-                <FormattedNumber
-                  value={transactionData.amountInArs}
-                  style={"currency"}
-                  currency="ARS"
-                />
-              </Typography>
-              <Typography className={classes.typographyStyle} component="div">
-                {t("nameAndLastName")}: {transactionData.username}{" "}
-                {transactionData.lastName}
-              </Typography>
-              <Typography className={classes.typographyStyle} component="div">
-                {t("operations")}: {transactionData.operations}
-              </Typography>
+          <div style={{ marginLeft: "30px", marginTop: 30 }}>
+            {activeTransaction && transactionData !== undefined && (
+              <>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("hour")}: {dayjs(transactionData.hour).format("HH:mm")} hs
+                </Typography>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("criptoName")}:{transactionData.criptoName}
+                </Typography>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("nominal")}: {transactionData.nominals}
+                </Typography>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("valueCripto")}:{" "}
+                  <FormattedNumber
+                    value={transactionData.cotization}
+                    style={"currency"}
+                    currency="ARS"
+                  />
+                </Typography>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("amountNegociate")}:{" "}
+                  <FormattedNumber
+                    value={transactionData.amountInArs}
+                    style={"currency"}
+                    currency="ARS"
+                  />
+                </Typography>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("nameAndLastName")}: {transactionData.username}{" "}
+                  {transactionData.lastName}
+                </Typography>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("operations")}: {transactionData.operations}
+                </Typography>
 
-              <Typography className={classes.typographyStyle} component="div">
-                {t("reputation")}: {transactionData.reputation}
-              </Typography>
+                <Typography className={classes.typographyStyle} component="div">
+                  {t("reputation")}: {transactionData.reputation}
+                </Typography>
 
-              {(isBuy() && (
-                <>
-                  {" "}
-                  <Typography
-                    className={classes.typographyStyle}
-                    component="div"
-                  >
-                    CVU :{transactionData.addrOrCvu}
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, #071520, #194D78)",
-                      boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
-                      color: "white",
-                      marginTop:15,
-                    }}
-                    className={classes.button}
-                    classes={{ disabled: classes.disabledButton }}
-                    onClick={handleClickSendAmount}
-                    disabled={notified}
-                  >
-                    {t("notify")}
-                  </Button>
-                </>
-              )) || (
-                <>
-                  <Typography
-                    className={classes.typographyStyle}
-                    component="div"
-                  >
-                    {t("addrW")}: {transactionData.addrOrCvu}
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, #071520, #194D78)",
-                      boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
-                      color: "white",
-                      marginTop:15,
-                    }}
-                    className={classes.button}
-                    classes={{ disabled: classes.disabledButton }}
-                    onClick={handleCompleteAndSendCripto}
-                    disabled={!completeSend}
-                  >
-                    {t("releaseCripto")}
-                  </Button>
-                </>
-              )}
+                {(isBuy() && (
+                  <>
+                    {" "}
+                    <Typography
+                      className={classes.typographyStyle}
+                      component="div"
+                    >
+                      CVU :{transactionData.addrOrCvu}
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      style={{
+                        background:
+                          "linear-gradient(to bottom, #071520, #194D78)",
+                        boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
+                        color: "white",
+                        marginTop: 15,
+                      }}
+                      className={classes.button}
+                      classes={{ disabled: classes.disabledButton }}
+                      onClick={handleClickSendAmount}
+                      disabled={notified}
+                    >
+                      {t("notify")}
+                    </Button>
+                  </>
+                )) || (
+                  <>
+                    <Typography
+                      className={classes.typographyStyle}
+                      component="div"
+                    >
+                      {t("addrW")}: {transactionData.addrOrCvu}
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      style={{
+                        background:
+                          "linear-gradient(to bottom, #071520, #194D78)",
+                        boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
+                        color: "white",
+                        marginTop: 15,
+                      }}
+                      className={classes.button}
+                      classes={{ disabled: classes.disabledButton }}
+                      onClick={handleCompleteAndSendCripto}
+                      disabled={!completeSend}
+                    >
+                      {t("releaseCripto")}
+                    </Button>
+                  </>
+                )}
 
-              <div style={{ paddingTop: "10px" }}></div>
+                <div style={{ paddingTop: "10px" }}></div>
 
-              <Button
-                variant="outlined"
-                style={{
-                  background: "linear-gradient(to bottom, #071520, #194D78)",
-                  boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
-                  color: "white",
-                }}
-                className={classes.button}
-                onClick={openModal}
-              >
-                {t("cancelT")}
-              </Button>
-            </>
-          )}
+                <Button
+                  variant="outlined"
+                  style={{
+                    background: "linear-gradient(to bottom, #071520, #194D78)",
+                    boxShadow: " 4px 4px 4px 4px rgba(0, 0, 0, 0.4)",
+                    color: "white",
+                  }}
+                  className={classes.button}
+                  onClick={openModal}
+                >
+                  {t("cancelT")}
+                </Button>
+              </>
+            )}
           </div>
         </CardWrap>
       </div>

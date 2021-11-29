@@ -56,7 +56,9 @@
     "backQuotations": "Back to quotations",
     "transactionSuccessfully" :"Transaction was completed successfully" , 
     "users": "Users" , 
-    "logout" : "Logout"
-    
+    "logout" : "Logout",
+    "error":"Error to connect to server",
+    "lastName must contain between 10 and 30 characters":"Last Name must contain between 10 and 30 characters",
+    "Error user with this data already exist":"Error user with this data already exist"
    
 }
