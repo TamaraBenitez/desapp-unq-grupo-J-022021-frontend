@@ -36,7 +36,7 @@ const App = () => {
               component={Activities}
             />
             <PrivateRoute path="/users" component={Users} />
-            <Redirect from="/favicon.ico" to="/login" />
+            <Redirect from="/" to="/login" />
           </Switch>
         </ModalTransactionProvider>
       </BrowserRouter>
